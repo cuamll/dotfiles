@@ -1,0 +1,13 @@
+:EasyDigraph	easydigraph.txt	/*:EasyDigraph*
+EasyDigraph	easydigraph.txt	/*EasyDigraph*
+easydigraph-CHANGELOG	easydigraph.txt	/*easydigraph-CHANGELOG*
+easydigraph-contents	easydigraph.txt	/*easydigraph-contents*
+easydigraph-install	easydigraph.txt	/*easydigraph-install*
+easydigraph-intro	easydigraph.txt	/*easydigraph-intro*
+easydigraph-option	easydigraph.txt	/*easydigraph-option*
+easydigraph.txt	easydigraph.txt	/*easydigraph.txt*
+g:EasyDigraph_cpunc	easydigraph.txt	/*g:EasyDigraph_cpunc*
+g:EasyDigraph_imap	easydigraph.txt	/*g:EasyDigraph_imap*
+g:EasyDigraph_nmap	easydigraph.txt	/*g:EasyDigraph_nmap*
+g:EasyDigraph_subs	easydigraph.txt	/*g:EasyDigraph_subs*
+g:EasyDigraph_vmap	easydigraph.txt	/*g:EasyDigraph_vmap*

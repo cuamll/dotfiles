@@ -1,0 +1,108 @@
+set nocompatible
+filetype off
+
+"------- VUNDLE -------
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+
+"My bundles for vundle:
+Plugin 'Rykka/easydigraph.vim'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'vimwiki/vimwiki'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-surround'
+Plugin 'tomasr/molokai'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-vinegar'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'bling/vim-airline'
+Plugin 'altercation/vim-colors-solarized'
+
+call vundle#end()
+filetype plugin indent on
+" -- END OF VUNDLE SETTINGS--
+
+"other things to set
+set copyindent
+set autoindent
+set relativenumber
+set number
+
+"Allows you to use commas to start commands
+let mapleader = ","
+
+
+set background=dark
+colorscheme solarized
+
+"Fast quitting?
+noremap <leader>qq :q!<cr>
+"Fast saving
+noremap <leader>w :w!<cr>
+"Easy edit of .vimrc
+noremap <leader>vrc :sp! $MYVIMRC<cr>
+
+"easy switching of tabs
+noremap <leader>tn :tabn<cr>
+noremap <leader>tp :tabp<cr>
+
+"Press Ctrl-J to split lines:
+"nnoremap <C-J> i<cr><Esc>
+
+"Save and quit
+noremap <leader>qw :wq<cr>
+
+"clear highlighting
+
+nnoremap <leader>c :nohl<cr>
+
+"file browser ease
+nnoremap <leader>exp :Explore<cr>
+nnoremap <leader>exw :vsp /home/callum/Dropbox/Public/work<cr>
+nnoremap <leader>sx :Sex!<cr>
+
+"Set default size
+set lines=50 columns=80
+"Ignore case if pattern is all lowercase, otherwise case-sensitive
+set smartcase
+"insert tabs at line start according to shiftwidth
+set smarttab
+"Expand tabs as spaces
+set expandtab
+"Tab completion stuff, apparently
+set wildmenu
+set wildmode=list:longest,full
+"Enable mouse support
+set mouse=a
+"Remap jj to escape in insert mode
+"inoremap jj <Esc>
+"nnoremap JJJJ <Nop>
+set shiftwidth=4 softtabstop=4
+set incsearch ignorecase hlsearch
+"Press space to clear search highlighting and any message already displayed.
+nnoremap <silent> <Space> :silent noh<Bar>echo<cr>
+"Stops vim from 'jumping over' wrapped lines
+"nnoremap j gj
+"nnoremap k gk
+"No more colons
+nnoremap ; :
+"Remap :q! to :qq for speeds
+nnoremap :qq :q!
+"Easy window navigation
+"noremap <C-h> <C-w>h
+"noremap <C-j> <C-w>j
+"noremap <C-k> <C-w>k
+"noremap <C-l> <C-w>l
+
+"Default font
+if has("win32")
+    set guifont=Courier\ New:h10:cANSI
+    set bs=2
+    syntax on
+else
+set guifont=Source\ Code\ Pro
+endif
