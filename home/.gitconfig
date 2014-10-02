@@ -3,6 +3,7 @@
 	email = callum.gray.10@ucl.ac.uk
 [credential]
 	help = cache --timeout=3600
+	helper = cache
 
 [alias]
     st = status -s
