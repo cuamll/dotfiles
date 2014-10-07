@@ -1,1 +1,0 @@
-/home/callum/dotfiles/zshrc
