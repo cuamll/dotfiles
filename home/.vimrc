@@ -111,3 +111,5 @@ if has("win32")
 else
 set guifont=Source\ Code\ Pro
 endif
+
+set backupdir=~/.vim_backups//
