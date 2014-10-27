@@ -67,7 +67,7 @@ nnoremap <leader>c :nohl<cr>
 
 "file browser ease
 nnoremap <leader>exp :Explore<cr>
-nnoremap <leader>exw :vsp /home/callum/Dropbox/Public/work<cr>
+nnoremap <leader>exw :vsp /home/callum/Dropbox<cr>
 nnoremap <leader>sx :Sex!<cr>
 
 "Easy buffer movement:
@@ -112,4 +112,5 @@ else
 set guifont=Source\ Code\ Pro
 endif
 
+set dir=~/.vim_backups//
 set backupdir=~/.vim_backups//

@@ -11,3 +11,4 @@
  alias ipy="ipython qtconsole --pylab=inline --style=solarized & disown"
 #  alias fuck="sudo $(history | tail -n 1 | awk '{ print $4, $NF }' )"
  alias cps="cd /home/callum/Dropbox/TDVP_CPS"
+ alias clemref="sqlite3 .config/Clementine/clementine.db 'update songs set unavailable=0;'"
