@@ -1,4 +1,6 @@
 [global_config]
+titlebars = False
+always_split_with_profile = True
 [keybindings]
 [profiles]
   [[default]]
