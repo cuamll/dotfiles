@@ -2,6 +2,7 @@
 [keybindings]
 [profiles]
   [[default]]
+    titlebars = False
     background_image = None
     background_type = transparent
   [[solarized-dark]]
