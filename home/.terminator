@@ -1,10 +1,10 @@
 [global_config]
-titlebars = False
+borderless = True
 always_split_with_profile = True
 [keybindings]
 [profiles]
   [[default]]
-    titlebars = False
+    show_titlebar = False
     background_image = None
     background_type = transparent
   [[solarized-dark]]
