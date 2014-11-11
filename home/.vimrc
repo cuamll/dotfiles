@@ -51,6 +51,9 @@ let g:UltiSnipsExpandTrigger="<c-tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+" Remap YCM GoTo command to something less ridiculous
+nnoremap <leader>gt :YcmCompleter GoTo<CR>
+
 "Allows you to use commas to start commands
 let mapleader = ","
 
