@@ -24,6 +24,8 @@ Plugin 'vim-scripts/a.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'whatyouhide/vim-gotham'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 call vundle#end()
 filetype plugin indent on
@@ -41,6 +43,13 @@ if !has('gui_running')
     let g:solarized_termtrans=1
 endif
 
+" Give global extra_conf.py for YouCompleteMe as a fallback
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+
+" Change ultisnips triggers so they don't conflict with YouCompleteMe
+let g:UltiSnipsExpandTrigger="<c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "Allows you to use commas to start commands
 let mapleader = ","
