@@ -7,25 +7,25 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'flazz/vim-colorschemes'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-abolish'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tomasr/molokai'
 Plugin 'bling/vim-airline'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-scripts/a.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'whatyouhide/vim-gotham'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'ervandew/supertab'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'whatyouhide/vim-gotham'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tomasr/molokai'
 
 call vundle#end()
 filetype plugin indent on
@@ -46,13 +46,20 @@ endif
 " Give global extra_conf.py for YouCompleteMe as a fallback
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
-" Change ultisnips triggers so they don't conflict with YouCompleteMe
-let g:UltiSnipsExpandTrigger="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsSnippetsDir = "~/.vim/bundle/vim-snippets/snippets/"
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " Remap YCM GoTo command to something less ridiculous
-nmap <leader>gt :YcmCompleter GoTo<CR>
+nmap <leader>jd :YcmCompleter GoTo<CR>
 
 "Allows you to use commas to start commands
 let mapleader = ","
@@ -62,14 +69,14 @@ noremap <leader>qq :q!<cr>
 "Fast saving
 noremap <leader>w :w!<cr>
 "Easy edit of .vimrc
-noremap <leader>vrc :sp! $MYVIMRC<cr>
+noremap <leader>vrc :vsp! $MYVIMRC<cr>
 
 "easy switching of tabs
 noremap <leader>tn :tabn<cr>
 noremap <leader>tp :tabp<cr>
 
 "Press Ctrl-J to split lines:
-nnoremap <C-J> i<cr><Esc>
+nnoremap <C-I> i<cr><Esc>
 
 "Save and quit
 noremap <leader>qw :wq<cr>
@@ -83,10 +90,10 @@ nnoremap <leader>exw :vsp /home/callum/Dropbox<cr>
 nnoremap <leader>sx :Sex!<cr>
 
 "Easy buffer movement:
-map <C-J> <C-W>j<C-W>_
-map <C-K> <C-W>k<C-W>_
-map <C-L> <C-W>l<C-W>_
-map <C-H> <C-W>h<C-W>_
+"map <C-J> <C-W>j<C-W>_
+"map <C-K> <C-W>k<C-W>_
+"map <C-L> <C-W>l<C-W>_
+"map <C-H> <C-W>h<C-W>_
 
 "Ignore case if pattern is all lowercase, otherwise case-sensitive
 set smartcase
@@ -112,8 +119,6 @@ nnoremap j gj
 nnoremap k gk
 "No more colons
 nnoremap ; :
-"Remap :q! to :qq for speeds
-nnoremap :qq :q!
 
 "Default font
 if has("win32")
