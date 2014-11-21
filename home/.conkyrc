@@ -116,12 +116,12 @@ ${color lightgrey} ${top name 8} ${top pid 8} ${top cpu 8} ${top mem 8}
 ${color lightgrey} ${top name 9} ${top pid 9} ${top cpu 9} ${top mem 9}
 $hr
 ${color2}Now Playing:
- ${color2}Artist : ${color}${execi 5 python2 /home/callum/.homesick/repos/dotfiles/home/.anowplaying.py -a}
- ${color2}Title  : ${color}${execi 5 python2 /home/callum/.homesick/repos/dotfiles/home/.anowplaying.py -t}
- ${color2}Album  : ${color}${execi 5 python2 /home/callum/.homesick/repos/dotfiles/home/.anowplaying.py -l}
- ${color2}Year   : ${color}${execi 5 python2 /home/callum/.homesick/repos/dotfiles/home/.anowplaying.py -y}
- ${color2}Bitrate: ${color}${execi 5 python2 /home/callum/.homesick/repos/dotfiles/home/.anowplaying.py -b}kbit/s
- ${execi 5 python2 /home/callum/.homesick/repos/dotfiles/home/.anowplaying.py -c /tmp/cover.jpg}${image /tmp/cover.jpg -p 45,715 -s 300x300 -n}
+ ${color2}Artist : ${color}${execi 5 python2 /home/callum/.anowplaying.py -a}
+ ${color2}Title  : ${color}${execi 5 python2 /home/callum/.anowplaying.py -t}
+ ${color2}Album  : ${color}${execi 5 python2 /home/callum/.anowplaying.py -l}
+ ${color2}Year   : ${color}${execi 5 python2 /home/callum/.anowplaying.py -y}
+ ${color2}Bitrate: ${color}${execi 5 python2 /home/callum/.anowplaying.py -b}kbit/s
+ ${execi 5 python2 /home/callum/.anowplaying.py -c /tmp/cover.jpg}${image /tmp/cover.jpg -p 45,715 -s 300x300 -n}
 Status API Training Shop Blog About
 © 2014 GitHub, Inc. Terms Privacy Security Contact
 
