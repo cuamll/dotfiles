@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 #-*- coding: utf-8 -*-
 #
-# anowplaying.py
+# .anowplaying.py
 #
 #  Connects to dbus and retrieves
 #  information about the currently
@@ -89,4 +89,3 @@ if __name__ == '__main__':
     
 Status API Training Shop Blog About
 © 2014 GitHub, Inc. Terms Privacy Security Contact
-
