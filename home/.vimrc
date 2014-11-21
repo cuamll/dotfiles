@@ -43,6 +43,10 @@ if !has('gui_running')
     let g:solarized_termtrans=1
 endif
 
+:set guioptions -=T
+:set guioptions -=r
+:set guioptions -=L
+:set guioptions -=b
 " Give global extra_conf.py for YouCompleteMe as a fallback
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
@@ -58,8 +62,12 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
+let g:ycm_error_symbol = '!!'
+let g:ycm_warning_symbol = '??'
+
 " Remap YCM GoTo command to something less ridiculous
 nmap <leader>jd :YcmCompleter GoTo<CR>
+nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 
 "Allows you to use commas to start commands
 let mapleader = ","
