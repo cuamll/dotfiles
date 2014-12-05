@@ -39,6 +39,10 @@ set number
 set background=dark
 colorscheme solarized
 
+autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
+autocmd BufLeave ?akefile* set expandtab shiftwidth=4 softtabstop=4
+
+
 if !has('gui_running')
     let g:solarized_termtrans=1
 endif

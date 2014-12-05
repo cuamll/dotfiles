@@ -8,7 +8,7 @@
 #  playing track in amarok.
 #
 
-import dbus, optparse, shutil, commands
+import dbus, optparse, shutil, commands, os
 
 if __name__ == '__main__':
     '''Check if clementine is running'''
@@ -18,7 +18,7 @@ if __name__ == '__main__':
 
     '''Get system bus'''
     bus = dbus.SessionBus()
-    amarok = bus.get_object('org.mpris.clementine', '/Player')
+    amarok = bus.get_object('org.mpris.clementine', '/Player', 'org.freedesktop.MediaPlayer')
     amarokdict = amarok.GetMetadata()
 
     '''Set up the command line parser'''
@@ -41,11 +41,11 @@ if __name__ == '__main__':
     '''Get the parser options printed'''
     (opts, args) = parser.parse_args()
     if opts.artist and amarokdict.has_key('artist') :
-        print amarokdict['artist']
+        print amarokdict['artist'].encode('utf-8')
     if opts.title and amarokdict.has_key('title'):
-        print amarokdict['title']
+        print amarokdict['title'].encode('utf-8')
     if opts.album and amarokdict.has_key('album'):
-        print amarokdict['album']
+        print amarokdict['album'].encode('utf-8')
     if opts.genre and amarokdict.has_key('genre'):
         print amarokdict['genre']
     if opts.year and amarokdict.has_key('year'):
@@ -86,6 +86,3 @@ if __name__ == '__main__':
                 print ""
         else :
             print ""
-    
-Status API Training Shop Blog About
-© 2014 GitHub, Inc. Terms Privacy Security Contact

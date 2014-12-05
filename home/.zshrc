@@ -121,3 +121,8 @@ export EDITOR='vim'
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 homeshick --quiet refresh
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    export DEFAULT_USER=cgray
+    export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+fi

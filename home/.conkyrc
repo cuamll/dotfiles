@@ -12,10 +12,12 @@
 
 # Create own window instead of using desktop (required in nautilus)
 own_window yes
-own_window_type override
+own_window_type normal
 own_window_hints undecorated,below,skip_taskbar
+own_window_argb_visual
 # Use double buffering (reduces flicker, may not work for everyone)
-double_buffer yes
+# double_buffer yes
+override_utf8_locale yes
 
 # fiddle with window
 use_spacer yes
@@ -25,7 +27,7 @@ use_xft yes
 update_interval 1.0
 default_bar_size 200
 #Maximum Width of Window
-maximum_width 320
+maximum_width 600
 
 # Minimum size of text area
  #minimum_size 550 5
@@ -36,7 +38,7 @@ draw_shades no
 # Text stuff
 draw_outline no # amplifies text if yes
 draw_borders no
-font arial
+font Alegreya
 uppercase no # set to yes if you want all text to be in uppercase
 
 # Stippled borders?
@@ -56,72 +58,34 @@ own_window_transparent yes
 
 # Text alignment, other possible values are commented
 #alignment top_left
-alignment tm
+#alignment tm
+alignment top_right
 #alignment bottom_left
 #alignment bottom_right
 
 # Gap between borders of screen and text
-gap_x 10
-gap_y 10
+gap_x 40
+gap_y 25
+
+${execi 30 curl -s "http://weather.yahooapis.com/forecastrss?w=44418&u=c" -o ~/.cache/weather.xml}
 
 # stuff after ‘TEXT’ will be formatted on screen
 
-xftfont Terminus:size=10
+use_xft yes
+xftfont Alegreya
+
 TEXT
+${execi 30 curl -s "http://weather.yahooapis.com/forecastrss?w=44418&u=c" -o ~/.cache/weather.xml}
+${font Noto Serif:size=24}${color 444444}${alignr}${Time %A %d %B}${font Noto Serif:size=12}
 
+${font Noto Serif:size=20}${alignr} ${time %H:%M}${font Noto Serif:size=12}
 
- ${color CC9900}Nithin's Vaio${hr 2}
- ${color slate grey}${time %a, } ${color }${time %e %B %G}   ${color slate grey}${time %Z, }${color }${time %H:%M:%S}
- ${color slate grey}UpTime: ${color }$uptime ${color slate grey}    CPU:${color } $cpu% ${acpitemp}C
-$color
-${color CC9900}SYSTEM ${hr 2}$color
-$nodename $sysname $kernel on $machine
+${font Noto Serif:size=14}${color 444444}${alignr}battery: ${battery_percent}%${font Noto Serif:size=12}
 
-${color CC9900}CPU ${hr 2}$color
-Intel® Core™ i3 CPU M 350 @ 2.27GHz × 4
-Total CPU: ${cpu cpu0}%
-${color 597DB2}${cpubar}$color
- ${cpugraph 30 000000 ffffff}
+${font Noto Serif:size=14}${alignr}today: ${execi 30 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "text=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1' | tr '[:upper:]' '[:lower:]' }, ${execi 30 grep "yweather:condition" ~/.cache/weather.xml | grep -o "temp=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}${font Noto Serif:size=12}
+${font Noto Serif:size=14}${alignr}tomorrow: ${execi 30 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "text=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==2' | tr '[:upper:]' '[:lower:]' }, ${execi 30 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "high=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==2'}${font Noto Serif:size=12}
 
-NAME                         PID     CPU%   MEM%
-${color CCFFFF}${top name 1}             ${top pid 1} ${top cpu 1} ${top mem 1}
-${top name 2}               ${top pid 2} ${top cpu 2} ${top mem 2}
-${top name 3}               ${top pid 3} ${top cpu 3} ${top mem 3}
-${top name 4}               ${top pid 4} ${top cpu 4} ${top mem 4}$color
-
-${color CC9900}MEMORY ${hr 2}$color
- RAM Used:${mem}  Free:${memfree}/${memmax}
- RAM: $memperc%  ${color FF6600} ${membar 6}$color
-
-${color CC9900}DISK ${hr 2}$color
- ${color slate grey}ROOT:  ${color }${fs_free /}/${fs_size /} ${alignr} ${fs_bar 5,100 }
- ${color slate grey}HOME:  ${color }${fs_free  /home}/${fs_size /home} ${alignr} ${fs_bar 5,100 /home}
-
- ${color ffffff}BAT: ${battery}     ${battery_bar  10,130 }
-
-$hr
-${color2}Networking:
-${color2}Up:  $color ${upspeed enp3s0} (${totalup enp4s0})${alignr 0}${upspeedgraph enp4s0 15,120} 
-${color2}Down:$color ${downspeed enp3s0} (${totaldown enp4s0})${alignr 0}${downspeedgraph enp4s0 15,120}
-$hr
-${color2}Name              PID   CPU%   MEM%
-${color lightgrey} ${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
-${color lightgrey} ${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
-${color lightgrey} ${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
-${color lightgrey} ${top name 4} ${top pid 4} ${top cpu 4} ${top mem 4}
-${color lightgrey} ${top name 5} ${top pid 5} ${top cpu 5} ${top mem 5}
-${color lightgrey} ${top name 6} ${top pid 6} ${top cpu 6} ${top mem 6}
-${color lightgrey} ${top name 7} ${top pid 7} ${top cpu 7} ${top mem 7}
-${color lightgrey} ${top name 8} ${top pid 8} ${top cpu 8} ${top mem 8}
-${color lightgrey} ${top name 9} ${top pid 9} ${top cpu 9} ${top mem 9}
-$hr
-${color2}Now Playing:
- ${color2}Artist : ${color}${execi 5 python2 /home/callum/.anowplaying.py -a}
- ${color2}Title  : ${color}${execi 5 python2 /home/callum/.anowplaying.py -t}
- ${color2}Album  : ${color}${execi 5 python2 /home/callum/.anowplaying.py -l}
- ${color2}Year   : ${color}${execi 5 python2 /home/callum/.anowplaying.py -y}
- ${color2}Bitrate: ${color}${execi 5 python2 /home/callum/.anowplaying.py -b}kbit/s
- ${execi 5 python2 /home/callum/.anowplaying.py -c /tmp/cover.jpg}${image /tmp/cover.jpg -p 45,715 -s 300x300 -n}
-Status API Training Shop Blog About
-© 2014 GitHub, Inc. Terms Privacy Security Contact
-
+${font Noto Serif:size=14}${alignr}${color 444444}${execi 5 python2 /home/callum/.anowplaying.py -t}
+${font Noto Serif:size=14}${alignr}${color 444444}${execi 5 python2 /home/callum/.anowplaying.py -a}
+${font Noto Serif:size=14}${alignr}${color 444444}${execi 5 python2 /home/callum/.anowplaying.py -l}
+${font Noto Serif:size=14}${alignr}${color 444444}${execi 5 python2 /home/callum/.anowplaying.py -c}
