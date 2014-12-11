@@ -85,7 +85,7 @@ ${font Noto Serif:size=14}${color 444444}${alignr}battery: ${battery_percent}%${
 ${font Noto Serif:size=14}${alignr}today: ${execi 30 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "text=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1' | tr '[:upper:]' '[:lower:]' }, ${execi 30 grep "yweather:condition" ~/.cache/weather.xml | grep -o "temp=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}${font Noto Serif:size=12}
 ${font Noto Serif:size=14}${alignr}tomorrow: ${execi 30 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "text=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==2' | tr '[:upper:]' '[:lower:]' }, ${execi 30 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "high=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==2'}${font Noto Serif:size=12}
 
-${font Noto Serif:size=14}${alignr}${color 444444}${execi 5 python2 /home/callum/.anowplaying.py -t}
-${font Noto Serif:size=14}${alignr}${color 444444}${execi 5 python2 /home/callum/.anowplaying.py -a}
-${font Noto Serif:size=14}${alignr}${color 444444}${execi 5 python2 /home/callum/.anowplaying.py -l}
+${font Noto Serif:size=14}${alignr}${color 444444}${execi 5 python2 /home/callum/.nowplaying.py -t}
+${font Noto Serif:size=14}${alignr}${color 444444}${execi 5 python2 /home/callum/.nowplaying.py -a}
+${font Noto Serif:size=14}${alignr}${color 444444}${execi 5 python2 /home/callum/.nowplaying.py -l}
 #${font Noto Serif:size=28}${alignr}${color 444444}${execi 5 python2 /home/callum/.anowplaying.py -c ~/.album/cover.jpg}${image /home/callum/.album/cover.jpg -p 870,310 -s 128x128}
