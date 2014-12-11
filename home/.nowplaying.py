@@ -18,23 +18,6 @@ which player you're using, as long as the arguments are defined.
 
 import dbus, optparse, shutil, commands, os, subprocess
 
-'''Set up the command line parser'''
-usage = 'usage: %prog [options]'
-parser = optparse.OptionParser(usage=usage)
-parser.add_option('-a',  '--artist',  action='store_true', help='artist name')
-parser.add_option('-t',  '--title',   action='store_true', help='title of the track')
-parser.add_option('-l',  '--album',   action='store_true', help='album name')
-parser.add_option('-g',  '--genre',   action='store_true', help='genre of the current track')
-parser.add_option('-y',  '--year',    action='store_true', help='year of the track')
-parser.add_option('-m',  '--mtime',    action='store_true', help='time of the track')
-parser.add_option('-r',  '--rtime',    action='store_true', help='remaining time for the track')
-parser.add_option('-e',  '--etime',    action='store_true', help='elapsed time for the track')
-parser.add_option('-p',  '--progress',    action='store_true', help='progress of the track')
-parser.add_option('-n',  '--track',   action='store_true', help='track number')
-parser.add_option('-b',  '--bitrate', action='store_true', help='bitrate of the track')
-parser.add_option('-s',  '--sample',  action='store_true', help='sample rate of the track')
-parser.add_option('-c',  '--cover',   metavar='filename',  help='copy cover art to destination file')
-
 if __name__ == '__main__':
     '''Check if clementine is running'''
     output = commands.getoutput('ps -A')
@@ -45,7 +28,22 @@ if __name__ == '__main__':
         clem = bus.get_object('org.mpris.clementine', '/Player', 'org.freedesktop.MediaPlayer')
         clemdict = clem.GetMetadata()
 
-        '''If it's stopped working but the parser part back here'''
+        '''Set up the command line parser'''
+        usage = 'usage: %prog [options]'
+        parser = optparse.OptionParser(usage=usage)
+        parser.add_option('-a',  '--artist',  action='store_true', help='artist name')
+        parser.add_option('-t',  '--title',   action='store_true', help='title of the track')
+        parser.add_option('-l',  '--album',   action='store_true', help='album name')
+        parser.add_option('-g',  '--genre',   action='store_true', help='genre of the current track')
+        parser.add_option('-y',  '--year',    action='store_true', help='year of the track')
+        parser.add_option('-m',  '--mtime',    action='store_true', help='time of the track')
+        parser.add_option('-r',  '--rtime',    action='store_true', help='remaining time for the track')
+        parser.add_option('-e',  '--etime',    action='store_true', help='elapsed time for the track')
+        parser.add_option('-p',  '--progress',    action='store_true', help='progress of the track')
+        parser.add_option('-n',  '--track',   action='store_true', help='track number')
+        parser.add_option('-b',  '--bitrate', action='store_true', help='bitrate of the track')
+        parser.add_option('-s',  '--sample',  action='store_true', help='sample rate of the track')
+        parser.add_option('-c',  '--cover',   metavar='filename',  help='copy cover art to destination file')
 
         '''Get the parser options printed'''
         (opts, args) = parser.parse_args()
