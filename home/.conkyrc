@@ -27,10 +27,10 @@ use_xft yes
 update_interval 1.0
 default_bar_size 200
 #Maximum Width of Window
-maximum_width 600
+maximum_width 1000
 
 # Minimum size of text area
- #minimum_size 550 5
+minimum_size 1000 1000
 
 # Draw shades?
 draw_shades no
@@ -76,7 +76,7 @@ xftfont Alegreya
 
 TEXT
 ${execi 30 curl -s "http://weather.yahooapis.com/forecastrss?w=44418&u=c" -o ~/.cache/weather.xml}
-${font Noto Serif:size=24}${color 444444}${alignr}${Time %A %d %B}${font Noto Serif:size=12}
+${font Noto Serif:size=22}${color 444444}${alignr}${Time %A %d %B}${font Noto Serif:size=12}
 
 ${font Noto Serif:size=20}${alignr} ${time %H:%M}${font Noto Serif:size=12}
 
@@ -88,4 +88,4 @@ ${font Noto Serif:size=14}${alignr}tomorrow: ${execi 30 grep "yweather:forecast"
 ${font Noto Serif:size=14}${alignr}${color 444444}${execi 5 python2 /home/callum/.anowplaying.py -t}
 ${font Noto Serif:size=14}${alignr}${color 444444}${execi 5 python2 /home/callum/.anowplaying.py -a}
 ${font Noto Serif:size=14}${alignr}${color 444444}${execi 5 python2 /home/callum/.anowplaying.py -l}
-${font Noto Serif:size=14}${alignr}${color 444444}${execi 5 python2 /home/callum/.anowplaying.py -c}
+#${font Noto Serif:size=28}${alignr}${color 444444}${execi 5 python2 /home/callum/.anowplaying.py -c ~/.album/cover.jpg}${image /home/callum/.album/cover.jpg -p 870,310 -s 128x128}

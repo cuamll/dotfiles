@@ -5,7 +5,7 @@
 #
 #  Connects to dbus and retrieves
 #  information about the currently
-#  playing track in amarok.
+#  playing track in clementine.
 #
 
 import dbus, optparse, shutil, commands, os
@@ -18,8 +18,8 @@ if __name__ == '__main__':
 
     '''Get system bus'''
     bus = dbus.SessionBus()
-    amarok = bus.get_object('org.mpris.clementine', '/Player', 'org.freedesktop.MediaPlayer')
-    amarokdict = amarok.GetMetadata()
+    clem = bus.get_object('org.mpris.clementine', '/Player', 'org.freedesktop.MediaPlayer')
+    clemdict = clem.GetMetadata()
 
     '''Set up the command line parser'''
     usage = 'usage: %prog [options]'
@@ -40,28 +40,28 @@ if __name__ == '__main__':
     
     '''Get the parser options printed'''
     (opts, args) = parser.parse_args()
-    if opts.artist and amarokdict.has_key('artist') :
-        print amarokdict['artist'].encode('utf-8')
-    if opts.title and amarokdict.has_key('title'):
-        print amarokdict['title'].encode('utf-8')
-    if opts.album and amarokdict.has_key('album'):
-        print amarokdict['album'].encode('utf-8')
-    if opts.genre and amarokdict.has_key('genre'):
-        print amarokdict['genre']
-    if opts.year and amarokdict.has_key('year'):
-        print amarokdict['year']
-    if opts.track and amarokdict.has_key('tracknumber'):
-        print amarokdict['tracknumber']
-    if opts.bitrate and amarokdict.has_key('audio-bitrate'):
-        print amarokdict['audio-bitrate']
+    if opts.artist and clemdict.has_key('artist') :
+        print clemdict['artist'].encode('utf-8')
+    if opts.title and clemdict.has_key('title'):
+        print clemdict['title'].encode('utf-8')
+    if opts.album and clemdict.has_key('album'):
+        print clemdict['album'].encode('utf-8')
+    if opts.genre and clemdict.has_key('genre'):
+        print clemdict['genre']
+    if opts.year and clemdict.has_key('year'):
+        print clemdict['year']
+    if opts.track and clemdict.has_key('tracknumber'):
+        print clemdict['tracknumber']
+    if opts.bitrate and clemdict.has_key('audio-bitrate'):
+        print clemdict['audio-bitrate']
     if opts.sample :
-        print amarokdict['audio-samplerate']
+        print clemdict['audio-samplerate']
 
     '''Manage time stuff'''
     cpos = mt = mtime = etime = rtime = progress = None
-    if (opts.etime or opts.rtime or opts.mtime or opts.progress) and amarokdict.has_key('mtime'):
-        cpos    = amarok.PositionGet()/1000
-        mt      = amarokdict['mtime']/1000
+    if (opts.etime or opts.rtime or opts.mtime or opts.progress) and clemdict.has_key('mtime'):
+        cpos    = clem.PositionGet()/1000
+        mt      = clemdict['mtime']/1000
         mtime   = str(mt/60)+":"+str(mt%60) if mt%60>9 else str(mt/60)+":0"+str(mt%60)
         etime   = str(cpos/60)+":"+str(cpos%60) if cpos%60>9 else  str(cpos/60)+":0"+str(cpos%60)
         rtime   = str((mt-cpos)/60)+":"+str((mt-cpos)%60) if (mt-cpos)%60>9 else str((mt-cpos)/60)+":0"+str((mt-cpos)%60)
@@ -76,10 +76,10 @@ if __name__ == '__main__':
         print progress
 
     if opts.cover :
-        cover = amarokdict['arturl']
+        cover = clemdict['arturl']
         if cover != "" :
             try :
-                shutil.copyfile(cover.replace('file://', ''), opts.cover)
+                shutil.copyfile(str(cover.replace('file://', '')), opts.cover)
                 print ""
             except Exception, e:
                 print e
