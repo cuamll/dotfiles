@@ -9,6 +9,7 @@
  alias summer="cd /home/callum/Dropbox/Public/work/4th\ year/Summer"
  alias tdvp="cd /home/callum/Dropbox/TDVP_CPS"
  alias ipy="ipython qtconsole --pylab=inline --style=solarized & disown"
-#  alias fuck="sudo $(history | tail -n 1 | awk '{ print $4, $NF }' )"
+ # alias fuck="sudo $(fc -ln -1)"
  alias cps="cd /home/callum/Dropbox/TDVP_CPS"
  alias clemref="sqlite3 .config/Clementine/clementine.db 'update songs set unavailable=0;'"
+ alias code="cd /home/callum/Dropbox/code"
