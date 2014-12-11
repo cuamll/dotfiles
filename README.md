@@ -21,7 +21,7 @@ For terminator, the .terminator file probably won't link properly because termin
 
 or something like that. The link train is not hugely elegant but it works.
 
-For Macs there's no terminator so just grab [Solarized](http://ethanschoonover.com/solarized) and add the iterm2 colour scheme manually; no automating of this either. To use the agnoster zsh theme listed in .zshrc, grab Sauce Code Powerline from [powerline-fonts](http://github.com/lokaltog/powerline-fonts) and open it with fontviewer, then change the font manually in iterm2 (adding the glyphs separately doesn't seem to work). Also on Macs /opt/local/(s)bin is added to the path so that port: command not found doesn't pop up every time.
+For Macs there's no terminator so just grab [Solarized](http://ethanschoonover.com/solarized) and add the iterm2 colour scheme manually; no automating of this either. To use the agnoster zsh theme listed in .zshrc, grab Sauce Code Powerline from [powerline-fonts](http://github.com/lokaltog/powerline-fonts) and open it with fontviewer, then change the font manually in iterm2 (adding the glyphs separately doesn't seem to work). Also on Macs /opt/local/(s)bin is added to the path so that `port: command not found` doesn't pop up every time.
 
 Lastly for the .conkyrc get Noto Serif, which is free from [google](http://google.com/fonts). anowplaying.py was shamelessly stolen from [diadara](http://github.com/diadara/conky-clementine) and is just to grab music metadata from Clementine. It's been changed a bit, though, since the version from there doesn't seem to work (bus.get_object seems to point to the wrong thing).
 
