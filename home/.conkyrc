@@ -20,17 +20,17 @@ own_window_argb_visual
 override_utf8_locale yes
 
 # fiddle with window
-use_spacer yes
+use_spacer right
 use_xft yes
 
 # Update interval in seconds
 update_interval 1.0
-default_bar_size 200
+default_bar_size 0 200
 #Maximum Width of Window
 maximum_width 1000
 
 # Minimum size of text area
-minimum_size 1000 1000
+minimum_size 600 600
 
 # Draw shades?
 draw_shades no
@@ -44,16 +44,13 @@ uppercase no # set to yes if you want all text to be in uppercase
 # Stippled borders?
 stippled_borders 3
 
-# border margins
-border_margin 5
-
 # border width
 border_width 6
 
 # Default colors and also border colors, grey90 == #e5e5e5
 default_color FFFFCC
 
-own_window_colour #555555
+# own_window_colour #555555
 own_window_transparent yes
 
 # Text alignment, other possible values are commented

@@ -93,19 +93,36 @@ if __name__ == '__main__':
                     print ""
             else :
                 print ""
-    else:
-        if 'mpd' in output :
 
-            (opts, args) = parser.parse_args()
-            if opts.artist :
-                p = subprocess.Popen("mpc -f [%artist%]")
-                out = p.communicate()[0]
-                print out
-            if opts.album :
-                p = subprocess.Popen("mpc -f [%album%]")
-                out = p.communicate()[0]
-                print out
-            if opts.title :
-                p = subprocess.Popen("mpc -f [%title%]")
-                out = p.communicate()[0]
-                print out
+    elif 'mpd' in output :
+        (opts, args) = parser.parse_args()
+        if opts.artist :
+            p = subprocess.Popen("mpc -f [%artist%]")
+            out = p.communicate()[0]
+            print out
+        if opts.album :
+            p = subprocess.Popen("mpc -f [%album%]")
+            out = p.communicate()[0]
+            print out
+        if opts.title :
+            p = subprocess.Popen("mpc -f [%title%]")
+            out = p.communicate()[0]
+            print out
+
+    elif 'banshee' in output :
+        (opts,args) = parser.parse_args()
+        if opts.artist :
+            p = subprocess.Popen("banshee --no-present --query-artist|cut -c8-")
+            out = p.communicate()[0]
+            print out
+        if opts.album :
+            p = subprocess.Popen("banshee --no-present --query-album|cut -c8-")
+            out = p.communicate()[0]
+            print out
+        if opts.title :
+            p = subprocess.Popen("banshee --no-present --query-title|cut -c8-")
+            out = p.communicate()[0]
+            print out
+
+    else:
+        raise(SystemExit)
