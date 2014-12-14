@@ -53,6 +53,7 @@ endif
 :set guioptions -=b
 " Give global extra_conf.py for YouCompleteMe as a fallback
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 let g:UltiSnipsSnippetsDir = "~/.vim/bundle/vim-snippets/snippets/"
 
@@ -137,6 +138,8 @@ if has("win32")
     set guifont=Courier\ New:h10:cANSI
     set bs=2
     syntax on
+else if has("gui_macvim")
+    set guifont=Source\ Code\ Pro\ for\ Powerline
 else
 set guifont=Source\ Code\ Pro
 endif
