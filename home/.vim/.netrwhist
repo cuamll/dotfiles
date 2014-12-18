@@ -1,7 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/home/callum/Dropbox/code/vojtech_wien'
 let g:netrw_dirhist_2='/home/callum/Dropbox/code/vojtech_wien/wien_k_magnetolyte'
 let g:netrw_dirhist_3='/home/callum/Dropbox/code/vojtech_wien'
 let g:netrw_dirhist_4='/home/callum/Dropbox/code/vojtech_wien/wien_k_magnetolyte'
 let g:netrw_dirhist_5='/Users/cgray/Dropbox/code/vojtech_wien/wien_k_magnetolyte'
+let g:netrw_dirhist_6='/home/callum/Dropbox/code/wien/wien_k_magnetolyte'

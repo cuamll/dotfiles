@@ -89,6 +89,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export PATH="/opt/texbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH=/usr/local/include:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -126,3 +127,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     export DEFAULT_USER=cgray
     export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 fi
+
+
+# define a mupdf function here because I dunno
+# if I can put it in aliases.zsh or not
+mupdf() {
+    mupdf-x11 "$*" &
+}

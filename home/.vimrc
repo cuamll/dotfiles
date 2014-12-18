@@ -105,8 +105,8 @@ nnoremap <leader>sx :Sex!<cr>
 "Easy buffer movement:
 map <C-W><C-J> <C-W>j<C-W>_
 map <C-W><C-K> <C-W>k<C-W>_
-map <C-W><C-L> <C-W>l<C-W>_
-map <C-W><C-H> <C-W>h<C-W>_
+map <C-W><C-L> <C-W>l<C-W>|
+map <C-W><C-H> <C-W>h<C-W>|
 
 "Ignore case if pattern is all lowercase, otherwise case-sensitive
 set smartcase
@@ -138,7 +138,7 @@ if has("win32")
     set guifont=Courier\ New:h10:cANSI
     set bs=2
     syntax on
-else if has("gui_macvim")
+elseif has("gui_macvim")
     set guifont=Source\ Code\ Pro\ for\ Powerline
 else
 set guifont=Source\ Code\ Pro
