@@ -45,12 +45,12 @@ autocmd BufLeave ?akefile* set expandtab shiftwidth=4 softtabstop=4
 
 if !has('gui_running')
     let g:solarized_termtrans=1
+    :set guioptions -=T
+    :set guioptions -=r
+    :set guioptions -=L
+    :set guioptions -=b
 endif
 
-:set guioptions -=T
-:set guioptions -=r
-:set guioptions -=L
-:set guioptions -=b
 " Give global extra_conf.py for YouCompleteMe as a fallback
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion = 1
