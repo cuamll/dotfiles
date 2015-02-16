@@ -16,16 +16,16 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-scripts/a.vim'
-Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'flazz/vim-colorschemes'
 Plugin 'whatyouhide/vim-gotham'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
+"Plugin 'scrooloose/syntastic'
+"Plugin 'flazz/vim-colorschemes'
+"Plugin 'Lokaltog/vim-easymotion'
 
 call vundle#end()
 filetype plugin indent on
@@ -45,7 +45,7 @@ autocmd BufLeave ?akefile* set expandtab shiftwidth=4 softtabstop=4
 
 if has('gui_running')
     let g:solarized_termtrans=1
-    :set guioptions -=T "gives an error, look up what it's supposed to do
+    ":set guioptions -=T "gives an error, look up what it's supposed to do
     :set guioptions -=r
     :set guioptions -=L
     :set guioptions -=b
