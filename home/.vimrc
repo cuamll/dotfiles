@@ -24,8 +24,8 @@ Plugin 'whatyouhide/vim-gotham'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 "Plugin 'scrooloose/syntastic'
-"Plugin 'Lokaltog/vim-easymotion'
 "Plugin 'flazz/vim-colorschemes'
+"Plugin 'Lokaltog/vim-easymotion'
 
 call vundle#end()
 filetype plugin indent on
@@ -45,6 +45,7 @@ autocmd BufLeave ?akefile* set expandtab shiftwidth=4 softtabstop=4
 
 if has('gui_running')
     let g:solarized_termtrans=1
+    ":set guioptions -=T "gives an error, look up what it's supposed to do
     :set guioptions -=r
     :set guioptions -=L
     :set guioptions -=b
