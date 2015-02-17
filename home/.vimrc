@@ -45,7 +45,6 @@ autocmd BufLeave ?akefile* set expandtab shiftwidth=4 softtabstop=4
 
 if has('gui_running')
     let g:solarized_termtrans=1
-    ":set guioptions -=T "gives an error, look up what it's supposed to do
     :set guioptions -=r
     :set guioptions -=L
     :set guioptions -=b
