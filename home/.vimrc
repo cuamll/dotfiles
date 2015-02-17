@@ -16,16 +16,16 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-scripts/a.vim'
-Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'flazz/vim-colorschemes'
 Plugin 'whatyouhide/vim-gotham'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
+"Plugin 'scrooloose/syntastic'
+"Plugin 'Lokaltog/vim-easymotion'
+"Plugin 'flazz/vim-colorschemes'
 
 call vundle#end()
 filetype plugin indent on
@@ -43,12 +43,16 @@ autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
 autocmd BufLeave ?akefile* set expandtab shiftwidth=4 softtabstop=4
 
 
-if !has('gui_running')
+if has('gui_running')
     let g:solarized_termtrans=1
-    :set guioptions -=T
     :set guioptions -=r
     :set guioptions -=L
     :set guioptions -=b
+endif
+
+"Makes mouse reporting work properly on wide screens
+if has ('mouse_sgr')
+    set ttymouse=sgr
 endif
 
 " Give global extra_conf.py for YouCompleteMe as a fallback
