@@ -7,25 +7,30 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
+
+" tpope is a G
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-abolish'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'bling/vim-airline'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'vim-scripts/a.vim'
+
+" Code completion, syntax checking, etc.
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
+
+" other misc stuff that I've found I actually use
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'bling/vim-airline'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-scripts/a.vim'
+
+" A couple of colour schemes for convenience mostly
 Plugin 'whatyouhide/vim-gotham'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
-"Plugin 'scrooloose/syntastic'
-"Plugin 'flazz/vim-colorschemes'
-"Plugin 'Lokaltog/vim-easymotion'
 
 call vundle#end()
 filetype plugin indent on
