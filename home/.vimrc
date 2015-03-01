@@ -7,22 +7,27 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
+
+" tpope is a G
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-abolish'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'bling/vim-airline'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'vim-scripts/a.vim'
-Plugin 'scrooloose/syntastic'
+
+" Code completion, syntax checking, etc.
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'flazz/vim-colorschemes'
+
+" other misc stuff that I've found I actually use
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'bling/vim-airline'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-scripts/a.vim'
+
+" A couple of colour schemes for convenience mostly
 Plugin 'whatyouhide/vim-gotham'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
@@ -43,14 +48,18 @@ autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
 autocmd BufLeave ?akefile* set expandtab shiftwidth=4 softtabstop=4
 
 
-if !has('gui_running')
+if has('gui_running')
     let g:solarized_termtrans=1
+    :set guioptions -=r
+    :set guioptions -=L
+    :set guioptions -=b
 endif
 
-:set guioptions -=T
-:set guioptions -=r
-:set guioptions -=L
-:set guioptions -=b
+"Makes mouse reporting work properly on wide screens
+if has ('mouse_sgr')
+    set ttymouse=sgr
+endif
+
 " Give global extra_conf.py for YouCompleteMe as a fallback
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion = 1
