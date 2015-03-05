@@ -21,14 +21,13 @@ Plugin 'scroolose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
-Plugin 'lervag/vim-latex'
 
 " other misc stuff that I've found I actually use
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-scripts/a.vim'
-Plugin 'kien/ctrlp'
+Plugin 'kien/ctrlp.vim'
 
 " A couple of colour schemes for convenience mostly
 Plugin 'whatyouhide/vim-gotham'
@@ -129,6 +128,11 @@ nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 
 " Default Python syntax checker
 let g:syntastic_python_checkers = ['pylint', 'python']
+
+"CtrlP default settings
+nnoremap <leader>o :CtrlPMixed<CR>
+let g:ctrlp_map = ''
+let g:ctrlp_cmd = 'CtrlPMixed'
 
 " --- remappings, basically ---
 
