@@ -21,12 +21,14 @@ Plugin 'scroolose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
+Plugin 'lervag/vim-latex'
 
 " other misc stuff that I've found I actually use
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-scripts/a.vim'
+Plugin 'kien/ctrlp'
 
 " A couple of colour schemes for convenience mostly
 Plugin 'whatyouhide/vim-gotham'
@@ -35,21 +37,47 @@ Plugin 'tomasr/molokai'
 
 call vundle#end()
 filetype plugin indent on
-" -- END OF VUNDLE SETTINGS--
 
-"other things to set
+" -- END OF VUNDLE SETTINGS --
+
+" --- useful settings ---
+
 set copyindent
 set autoindent
+"Ignore case if pattern is all lowercase, otherwise case-sensitive
+set smartcase
+"insert tabs at line start according to shiftwidth
+set smarttab
+"Expand tabs as spaces
+set expandtab
+"Tab completion stuff, apparently
+set wildmenu
+set wildmode=list:longest,full
+"Enable mouse support
+set mouse=a
+
+set shiftwidth=4 softtabstop=4
+set incsearch hlsearch
+
+"Absolute number for current line, relative for others
 set relativenumber
 set number
+
+set dir=~/.vim_backups//
+set backupdir=~/.vim_backups//
+
+"colour scheme
 set background=dark
 colorscheme solarized
+
+" Highlight 80th column
+set colorcolumn=80
 
 " Set tab settings for makefiles only
 autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
 autocmd BufLeave ?akefile* set expandtab shiftwidth=4 softtabstop=4
 
-
+"GUI Vim settings - gets rid of cruft around the edges
 if has('gui_running')
     let g:solarized_termtrans=1
     :set guioptions -=r
@@ -57,13 +85,23 @@ if has('gui_running')
     :set guioptions -=b
 endif
 
-" Highlight 80th column
-set colorcolumn=80
-
 "Makes mouse reporting work properly on wide screens
 if has ('mouse_sgr')
     set ttymouse=sgr
 endif
+
+"Default font
+if has("win32")
+    set guifont=Courier\ New:h10:cANSI
+    set bs=2
+    syntax on
+elseif has("gui_macvim")
+    set guifont=Source\ Code\ Pro\ for\ Powerline
+else
+set guifont=Source\ Code\ Pro
+endif
+
+" --- set plugin variables ---
 
 " Give global extra_conf.py for YouCompleteMe as a fallback
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
@@ -77,9 +115,10 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<CR>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+" Dunno if you can actually do C-tab?
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<s-tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-tab>"
 
 let g:ycm_error_symbol = '!!'
 let g:ycm_warning_symbol = '??'
@@ -91,8 +130,13 @@ nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 " Default Python syntax checker
 let g:syntastic_python_checkers = ['pylint', 'python']
 
+" --- remappings, basically ---
+
 "Allows you to use commas to start commands
 let mapleader = ","
+
+"No more colons
+nnoremap ; :
 
 "Fast quitting?
 noremap <leader>qq :q!<cr>
@@ -124,39 +168,9 @@ map <C-W><C-K> <C-W>k<C-W>_
 map <C-W><C-L> <C-W>l<C-W>|
 map <C-W><C-H> <C-W>h<C-W>|
 
-"Ignore case if pattern is all lowercase, otherwise case-sensitive
-set smartcase
-"insert tabs at line start according to shiftwidth
-set smarttab
-"Expand tabs as spaces
-set expandtab
-"Tab completion stuff, apparently
-set wildmenu
-set wildmode=list:longest,full
-"Enable mouse support
-set mouse=a
 "Remap jj to escape in insert mode
 inoremap jj <Esc>
-
-set shiftwidth=4 softtabstop=4
-set incsearch ignorecase hlsearch
 
 "Stops vim from 'jumping over' wrapped lines
 nnoremap j gj
 nnoremap k gk
-"No more colons
-nnoremap ; :
-
-"Default font
-if has("win32")
-    set guifont=Courier\ New:h10:cANSI
-    set bs=2
-    syntax on
-elseif has("gui_macvim")
-    set guifont=Source\ Code\ Pro\ for\ Powerline
-else
-set guifont=Source\ Code\ Pro
-endif
-
-set dir=~/.vim_backups//
-set backupdir=~/.vim_backups//
