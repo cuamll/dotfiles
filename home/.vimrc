@@ -17,6 +17,7 @@ Plugin 'tpope/vim-abolish'
 
 " Code completion, syntax checking, etc.
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'scroolose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
@@ -44,6 +45,7 @@ set number
 set background=dark
 colorscheme solarized
 
+" Set tab settings for makefiles only
 autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
 autocmd BufLeave ?akefile* set expandtab shiftwidth=4 softtabstop=4
 
@@ -54,6 +56,9 @@ if has('gui_running')
     :set guioptions -=L
     :set guioptions -=b
 endif
+
+" Highlight 80th column
+set colorcolumn=80
 
 "Makes mouse reporting work properly on wide screens
 if has ('mouse_sgr')
@@ -72,7 +77,7 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsExpandTrigger = "<CR>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
@@ -83,6 +88,9 @@ let g:ycm_warning_symbol = '??'
 nmap <leader>jd :YcmCompleter GoTo<CR>
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 
+" Default Python syntax checker
+let g:syntastic_python_checkers = ['pylint', 'python']
+
 "Allows you to use commas to start commands
 let mapleader = ","
 
@@ -90,6 +98,8 @@ let mapleader = ","
 noremap <leader>qq :q!<cr>
 "Fast saving
 noremap <leader>w :w!<cr>
+"Save and quit
+noremap <leader>qw :wq<cr>
 "Easy edit of .vimrc
 noremap <leader>vrc :vsp! $MYVIMRC<cr>
 
@@ -97,11 +107,8 @@ noremap <leader>vrc :vsp! $MYVIMRC<cr>
 noremap <leader>tn :tabn<cr>
 noremap <leader>tp :tabp<cr>
 
-"Press Ctrl-J to split lines:
+"Press Ctrl-I to split lines:
 nnoremap <C-I> i<cr><Esc>
-
-"Save and quit
-noremap <leader>qw :wq<cr>
 
 "clear highlighting
 nnoremap <leader>c :nohl<cr>
@@ -131,11 +138,9 @@ set mouse=a
 "Remap jj to escape in insert mode
 inoremap jj <Esc>
 
-" nnoremap JJJJ <Nop>
 set shiftwidth=4 softtabstop=4
 set incsearch ignorecase hlsearch
-"Press space to clear search highlighting and any message already displayed.
-"nnoremap <silent> <Space> :silent noh<Bar>echo<cr>
+
 "Stops vim from 'jumping over' wrapped lines
 nnoremap j gj
 nnoremap k gk

@@ -89,7 +89,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export PATH="/opt/texbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-export PATH=/usr/local/include:$PATH
+export PATH="/usr/local/include:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -126,6 +126,7 @@ fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 if [[ "$OSTYPE" == "darwin"* ]]; then
     export DEFAULT_USER=cgray
     export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+    export PYTHONPATH="/opt/local/Library/Frameworks/Python.framework:$PYTHONPATH"
 fi
 
 
