@@ -134,13 +134,13 @@ function! airline#check_mode(winnr)
   if get(w:, 'airline_active', 1)
     let l:m = mode()
     if l:m ==# "i"
-      let l:mode = ['insert']
+      let l:mode = ['i']
     elseif l:m ==# "R"
-      let l:mode = ['replace']
+      let l:mode = ['r']
     elseif l:m =~# '\v(v|V||s|S|)'
-      let l:mode = ['visual']
+      let l:mode = ['v']
     else
-      let l:mode = ['normal']
+      let l:mode = ['n']
     endif
     let w:airline_current_mode = get(g:airline_mode_map, l:m, l:m)
   else

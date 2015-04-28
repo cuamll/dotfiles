@@ -16,11 +16,11 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-abolish'
 
 " Code completion, syntax checking, etc.
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'scroolose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'ervandew/supertab'
+" Plugin 'Valloric/YouCompleteMe'
+" Plugin 'ervandew/supertab'
 
 " other misc stuff that I've found I actually use
 Plugin 'terryma/vim-multiple-cursors'
@@ -30,8 +30,8 @@ Plugin 'vim-scripts/a.vim'
 Plugin 'kien/ctrlp.vim'
 
 " A couple of colour schemes for convenience mostly
-Plugin 'whatyouhide/vim-gotham'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'whatyouhide/vim-gotham'
 Plugin 'tomasr/molokai'
 
 call vundle#end()
@@ -111,13 +111,13 @@ let g:UltiSnipsSnippetsDir = "~/.vim/bundle/vim-snippets/snippets/"
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:SuperTabDefaultCompletionType = '<tab>'
 
 " better key bindings for UltiSnipsExpandTrigger
 " Dunno if you can actually do C-tab?
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<s-tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-tab>"
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<s-tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-tab>'
 
 let g:ycm_error_symbol = '!!'
 let g:ycm_warning_symbol = '??'
@@ -128,6 +128,7 @@ nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 
 " Default Python syntax checker
 let g:syntastic_python_checkers = ['pylint', 'python']
+let g:syntastic_cpp_checkers = ['clang_check', 'gcc', 'make']
 
 "CtrlP default settings
 nnoremap <leader>o :CtrlPMixed<CR>
