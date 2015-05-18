@@ -28,6 +28,7 @@ Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-scripts/a.vim'
 Plugin 'kien/ctrlp.vim'
+Plugin 'rking/ag.vim'
 
 " A couple of colour schemes for convenience mostly
 Plugin 'altercation/vim-colors-solarized'
@@ -102,16 +103,26 @@ endif
 
 " --- set plugin variables ---
 
+" - YCM -
+
 " Give global extra_conf.py for YouCompleteMe as a fallback
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion = 1
-
-let g:UltiSnipsSnippetsDir = "~/.vim/bundle/vim-snippets/snippets/"
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<tab>'
+
+let g:ycm_error_symbol = '!!'
+let g:ycm_warning_symbol = '??'
+
+" Remap YCM GoTo command to something less ridiculous
+nmap <leader>jd :YcmCompleter GoTo<CR>
+" nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+
+" - UltiSnips and snippets -
+let g:UltiSnipsSnippetsDir = "~/.vim/bundle/vim-snippets/snippets/"
 
 " better key bindings for UltiSnipsExpandTrigger
 " Dunno if you can actually do C-tab?
@@ -119,18 +130,19 @@ let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<s-tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-tab>'
 
-let g:ycm_error_symbol = '!!'
-let g:ycm_warning_symbol = '??'
 
-" Remap YCM GoTo command to something less ridiculous
-nmap <leader>jd :YcmCompleter GoTo<CR>
-nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
-
-" Default Python syntax checker
+" Syntastic options
 let g:syntastic_python_checkers = ['pylint', 'python']
-let g:syntastic_cpp_checkers = ['clang_check', 'gcc', 'make']
+let g:syntastic_cpp_checkers = ['cppcheck', 'gcc', 'make']
+let g:syntastic_cpp_gcc_quiet_messages = { "level": "warnings",
+                                         \ "file": ['\m^/opt/local','\m^/usr/include'] }
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+nnoremap <F5> :SyntasticCheck<cr>
+let g:syntastic_debug = 0
 
-"CtrlP default settings
+" CtrlP default settings
 nnoremap <leader>o :CtrlPMixed<CR>
 let g:ctrlp_map = ''
 let g:ctrlp_cmd = 'CtrlPMixed'
