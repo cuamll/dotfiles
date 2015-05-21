@@ -16,11 +16,11 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-abolish'
 
 " Code completion, syntax checking, etc.
-Plugin 'scroolose/syntastic'
+" Plugin 'scroolose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-" Plugin 'Valloric/YouCompleteMe'
-" Plugin 'ervandew/supertab'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'ervandew/supertab'
 
 " other misc stuff that I've found I actually use
 Plugin 'terryma/vim-multiple-cursors'
@@ -56,8 +56,14 @@ set wildmode=list:longest,full
 "Enable mouse support
 set mouse=a
 
-set shiftwidth=4 softtabstop=4
+let shift_width = 2
+let tab_stop = 2
+let soft_tab_stop = 2
+
+let &shiftwidth = shift_width
+let &softtabstop = soft_tab_stop
 set incsearch hlsearch
+
 
 "Absolute number for current line, relative for others
 set relativenumber
@@ -75,7 +81,7 @@ set colorcolumn=80
 
 " Set tab settings for makefiles only
 autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
-autocmd BufLeave ?akefile* set expandtab shiftwidth=4 softtabstop=4
+autocmd BufLeave ?akefile* set expandtab|let &shiftwidth=shift_width|let &softtabstop=soft_tab_stop
 
 "GUI Vim settings - gets rid of cruft around the edges
 if has('gui_running')
@@ -132,15 +138,15 @@ let g:UltiSnipsJumpBackwardTrigger = '<c-tab>'
 
 
 " Syntastic options
-let g:syntastic_python_checkers = ['pylint', 'python']
-let g:syntastic_cpp_checkers = ['cppcheck', 'gcc', 'make']
-let g:syntastic_cpp_gcc_quiet_messages = { "level": "warnings",
-                                         \ "file": ['\m^/opt/local','\m^/usr/include'] }
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-nnoremap <F5> :SyntasticCheck<cr>
-let g:syntastic_debug = 0
+" let g:syntastic_python_checkers = ['pylint', 'python']
+" let g:syntastic_cpp_checkers = ['cppcheck', 'gcc', 'make']
+" let g:syntastic_cpp_gcc_quiet_messages = { "level": "warnings",
+"                                          \ "file": ['\m^/opt/local','\m^/usr/include'] }
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" nnoremap <F5> :SyntasticCheck<cr>
+" let g:syntastic_debug = 0
 
 " CtrlP default settings
 nnoremap <leader>o :CtrlPMixed<CR>
