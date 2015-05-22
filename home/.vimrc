@@ -64,7 +64,6 @@ let &shiftwidth = shift_width
 let &softtabstop = soft_tab_stop
 set incsearch hlsearch
 
-
 "Absolute number for current line, relative for others
 set relativenumber
 set number
