@@ -1,6 +1,6 @@
 # ls aliases
 # alias ls="ls --color=auto"
- alias ll="ls -lhA"
+ alias ll="ls -lHA"
  alias la="ls -hA"
 
 # start matlab; turn off horizontal scrolling because it whinges otherwise
