@@ -148,9 +148,10 @@ let g:UltiSnipsJumpBackwardTrigger = '<c-tab>'
 " let g:syntastic_debug = 0
 
 " CtrlP default settings
-nnoremap <leader>o :CtrlPMixed<CR>
+nnoremap <leader>p :CtrlPMixed<CR>
 let g:ctrlp_map = ''
 let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_open_new_file = 'v'
 
 " --- remappings, basically ---
 
