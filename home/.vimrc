@@ -111,7 +111,7 @@ endif
 " - YCM -
 
 " Give global extra_conf.py for YouCompleteMe as a fallback
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion = 1
 
 " make YCM compatible with UltiSnips (using supertab)
