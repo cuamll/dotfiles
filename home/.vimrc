@@ -124,7 +124,7 @@ let g:ycm_warning_symbol = '??'
 
 " Remap YCM GoTo command to something less ridiculous
 nmap <leader>jd :YcmCompleter GoTo<CR>
-" nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 
 " - UltiSnips and snippets -
 let g:UltiSnipsSnippetsDir = "~/.vim/bundle/vim-snippets/snippets/"
