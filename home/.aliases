@@ -18,6 +18,13 @@
  alias tdvp="cd /home/callum/Dropbox/TDVP_CPS"
  alias wien="pushd ~/Dropbox/code/wien"
 
+if [ -z ${SHORT_HOST+x} ];
+then
+	:
+elif [ "$SHORT_HOST" = "pluto" ]; then
+alias vim=/Applications/MacPorts/MacVim.app/Contents/MacOS/Vim
+fi
+
 # copy current tmux buffer to system pasteboard
  alias cptm="tmux save-buffer - | pbcopy"
 
