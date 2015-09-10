@@ -125,7 +125,7 @@ fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     export DEFAULT_USER=cgray
-    export PATH=/opt/local/bin:/opt/local/sbin:/opt/local:$PATH
+    export PATH=/opt/local/bin:/opt/local/sbin:/opt/local:/usr/texbin:$PATH
     export PYTHONPATH="/opt/local/Library/Frameworks/Python.framework:$PYTHONPATH"
 fi
 
