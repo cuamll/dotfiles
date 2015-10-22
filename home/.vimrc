@@ -104,6 +104,7 @@ elseif has("gui_macvim")
     set guifont=Source\ Code\ Pro\ for\ Powerline
 else
 set guifont=Source\ Code\ Pro
+" set highlight Normal ctermbg=None " Makes terminal vim transparent in Linux
 endif
 
 " --- set plugin variables ---
