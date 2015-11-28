@@ -9,6 +9,11 @@
 # mount windows partition on big laptop 
  alias mwin="mount /dev/sda4"
 
+# open sesame
+alias jno="encfs ~/.private ~/private"
+# close sesame
+alias jnc="fusermount -u ~/private"
+
 # various places i cd to a lot
  alias dls="cd /home/callum/Downloads"
  alias videos="cd /home/callum/videos"

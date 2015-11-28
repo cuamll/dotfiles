@@ -16,17 +16,16 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-abolish'
 
 " Code completion, syntax checking, etc.
-" Plugin 'scroolose/syntastic'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+" Plugin 'Valloric/YouCompleteMe'
 
 " other misc stuff that I've found I actually use
-" Plugin 'terryma/vim-multiple-cursors'
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-scripts/a.vim'
-Plugin 'kien/ctrlp.vim'
 Plugin 'rking/ag.vim'
-Plugin 'embear/vim-localvimrc'
+Plugin 'vimwiki/vimwiki'
+Plugin 'mattn/calendar-vim'
 
 " A couple of colour schemes for convenience mostly
 Plugin 'altercation/vim-colors-solarized'
@@ -143,7 +142,7 @@ let g:ctrlp_map = ''
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_open_new_file = 'v'
 
-let g:localvimrc_whitelist='/home/callum/private/.*'
+let g:vimwiki_list = [{'path': '~/private/'}]
 
 " --- remappings, basically ---
 
