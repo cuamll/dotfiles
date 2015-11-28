@@ -17,18 +17,16 @@ Plugin 'tpope/vim-abolish'
 
 " Code completion, syntax checking, etc.
 " Plugin 'scroolose/syntastic'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'ervandew/supertab'
 
 " other misc stuff that I've found I actually use
-Plugin 'terryma/vim-multiple-cursors'
+" Plugin 'terryma/vim-multiple-cursors'
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-scripts/a.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'rking/ag.vim'
+Plugin 'embear/vim-localvimrc'
 
 " A couple of colour schemes for convenience mostly
 Plugin 'altercation/vim-colors-solarized'
@@ -36,6 +34,7 @@ Plugin 'whatyouhide/vim-gotham'
 Plugin 'tomasr/molokai'
 
 call vundle#end()
+
 filetype plugin indent on
 
 " -- END OF VUNDLE SETTINGS --
@@ -127,16 +126,6 @@ let g:ycm_warning_symbol = '??'
 nmap <leader>jd :YcmCompleter GoTo<CR>
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 
-" - UltiSnips and snippets -
-let g:UltiSnipsSnippetsDir = "~/.vim/bundle/vim-snippets/snippets/"
-
-" better key bindings for UltiSnipsExpandTrigger
-" Dunno if you can actually do C-tab?
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<s-tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-tab>'
-
-
 " Syntastic options
 " let g:syntastic_python_checkers = ['pylint', 'python']
 " let g:syntastic_cpp_checkers = ['cppcheck', 'gcc', 'make']
@@ -154,6 +143,8 @@ let g:ctrlp_map = ''
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_open_new_file = 'v'
 
+let g:localvimrc_whitelist='/home/callum/private/.*'
+
 " --- remappings, basically ---
 
 "Allows you to use commas to start commands
@@ -161,7 +152,7 @@ let mapleader = ","
 
 "No more colons
 nnoremap ; :
-
+ 
 "Fast quitting?
 noremap <leader>qq :q!<cr>
 "Fast saving
