@@ -21,7 +21,7 @@
 if [ -z ${SHORT_HOST+x} ];
 then
 	:
-elif [ "$SHORT_HOST" = "pluto" ]; then
+elif [ "$SHORT_HOST" = "scandium" ]; then
 alias vim=/Applications/MacPorts/MacVim.app/Contents/MacOS/Vim
 fi
 
