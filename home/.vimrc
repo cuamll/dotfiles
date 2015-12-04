@@ -1,41 +1,40 @@
 set nocompatible
-filetype off
+filetype plugin indent on
 
-"------- VUNDLE -------
+"--- begin vim-plug ---
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'
+call plug#begin()
 
 " tpope is a G
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-vinegar'
-Plugin 'tpope/vim-abolish'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-abolish'
 
 " Code completion, syntax checking, etc.
-Plugin 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 " Plugin 'Valloric/YouCompleteMe'
+
+" Latex plugin only when needed
+Plug 'lervag/vimtex', { 'on': 'TexToggle', 'for': ['tex', 'bib'] }
 
 " other misc stuff that I've found I actually use
 " Plugin 'terryma/vim-multiple-cursors'
-Plugin 'bling/vim-airline'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'vim-scripts/a.vim'
+Plug 'bling/vim-airline'
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-scripts/a.vim'
 " Plugin 'kien/ctrlp.vim'
-Plugin 'rking/ag.vim'
+Plug 'rking/ag.vim'
 
 " A couple of colour schemes for convenience mostly
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'whatyouhide/vim-gotham'
-Plugin 'tomasr/molokai'
+Plug 'altercation/vim-colors-solarized'
+Plug 'whatyouhide/vim-gotham'
+Plug 'tomasr/molokai'
 
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 
-" -- END OF VUNDLE SETTINGS --
+" --- end vim-plug ---
 
 " --- useful settings ---
 
@@ -116,10 +115,10 @@ endif
 " let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 " let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 " let g:SuperTabDefaultCompletionType = '<tab>'
-" 
+"
 " let g:ycm_error_symbol = '!!'
 " let g:ycm_warning_symbol = '??'
-" 
+"
 " " Remap YCM GoTo command to something less ridiculous
 " nmap <leader>jd :YcmCompleter GoTo<CR>
 " nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
