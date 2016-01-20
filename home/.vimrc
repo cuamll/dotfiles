@@ -3,42 +3,43 @@ filetype off
 
 "------- VUNDLE -------
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'
+call plug#begin()
 
 " tpope is a G
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-vinegar'
-Plugin 'tpope/vim-abolish'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-abolish'
 
 " Code completion, syntax checking, etc.
-" Plugin 'scroolose/syntastic'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'ervandew/supertab'
+Plug 'scrooloose/syntastic'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
+" Plug 'Valloric/YouCompleteMe'
+" Plug 'ervandew/supertab'
+
+" LaTeX and wiki support
+Plug 'lervag/vimtex', { 'on': 'TexToggle', 'for': ['tex', 'bib'] }
+Plug 'vimwiki/vimwiki', { 'for': 'wiki' }
 
 " other misc stuff that I've found I actually use
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'bling/vim-airline'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'vim-scripts/a.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'rking/ag.vim'
+Plug 'bling/vim-airline'
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-scripts/a.vim'
+Plug 'rking/ag.vim'
+" Plug 'terryma/vim-multiple-cursors'
+" Plug 'kien/ctrlp.vim'
 
 " A couple of colour schemes for convenience mostly
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'whatyouhide/vim-gotham'
-Plugin 'tomasr/molokai'
+Plug 'altercation/vim-colors-solarized'
+Plug 'whatyouhide/vim-gotham'
+Plug 'tomasr/molokai'
 
-call vundle#end()
+call plug#end()
 filetype plugin indent on
 
-" -- END OF VUNDLE SETTINGS --
+" -- end vim-plug
 
 " --- useful settings ---
 
