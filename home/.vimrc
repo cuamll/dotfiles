@@ -17,7 +17,7 @@ Plug 'scrooloose/syntastic'
 
 " Latex plugin only when needed
 Plug 'lervag/vimtex', { 'on': 'TexToggle', 'for': ['tex', 'bib'] }
-Plug 'vimwiki/vimwiki', { 'for': 'wiki' }
+Plug 'vimwiki/vimwiki'
 
 " other misc stuff that I've found I actually use
 Plug 'bling/vim-airline'
