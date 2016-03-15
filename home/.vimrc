@@ -77,6 +77,9 @@ set colorcolumn=80
 autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
 autocmd BufLeave ?akefile* set expandtab|let &shiftwidth=shift_width|let &softtabstop=soft_tab_stop
 
+" set free source fortran 
+let fortran_free_source=1
+
 "GUI Vim settings - gets rid of cruft around the edges
 if has('gui_running')
     let g:solarized_termtrans=1
