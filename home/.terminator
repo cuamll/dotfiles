@@ -2,9 +2,8 @@
   title_hide_sizetext = True
   always_split_with_profile = True
   title_transmit_fg_color = "#eee8d5"
-  hide_from_taskbar = True
   title_transmit_bg_color = "#002b36"
-  tab_position = hidden
+  hide_from_taskbar = True
   inactive_color_offset = 1.0
 [keybindings]
 [profiles]
@@ -23,7 +22,7 @@
     use_system_font = False
     cursor_color = "#eee8d5"
     foreground_color = "#eee8d5"
-    font = Source Code Pro 10
+    font = Source Code Pro Light 10
     background_color = "#002b36"
     scrollback_infinite = True
   [[solarized-light]]

@@ -4,19 +4,28 @@
 # Should you change your keyboard layout somewhen, delete
 # this file and re-run i3-config-wizard(1).
 #
-
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # Startup shit
-exec_always --no-startup-id feh --bg-fill /home/callum/Pictures/Wallpapers/unsplash/photo-1440964829947-ca3277bd37f8.jpg
+exec_always --no-startup-id feh --bg-fill /home/callum/Pictures/Wallpapers/minimal/purple_orange_geom.png
+exec_always --no-startup-id xautolock -time 10 -locker /bin/lock
 exec_always --no-startup-id python ~/.i3/disable-standby-fs.py
 exec --no-startup-id compton -b
 exec --no-startup-id redshift && echo 1 > ~/.config/redshift_status
 exec --no-startup-id unclutter
 exec --no-startup-id dunst
 exec --no-startup-id dropbox start
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 set $mod Mod4
 
@@ -156,22 +165,25 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
+
+        set $px_res 5
+        set $ppt_res 5
         # These bindings trigger as soon as you enter the resize mode
 
         # Pressing left will shrink the window’s width.
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym j resize shrink width $px_res px or $ppt_res ppt
+        bindsym k resize grow height $px_res px or $ppt_res ppt
+        bindsym l resize shrink height $px_res px or $ppt_res ppt
+        bindsym semicolon resize grow width $px_res px or $ppt_res ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width $px_res px or $ppt_res ppt
+        bindsym Up resize grow height $px_res px or $ppt_res ppt
+        bindsym Down resize shrink height $px_res px or $ppt_res ppt
+        bindsym Right resize grow width $px_res px or $ppt_res ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -191,7 +203,7 @@ gaps outer 36
 # finds out, if available)
 bar {
         status_command i3status
-        i3bar_command i3bar -t
+        i3bar_command /home/callum/.config/lemonbar/lemonbar.sh
         font pango: Roboto, Material-Design-Iconic-Font 10
         separator_symbol " \ "
         position top
