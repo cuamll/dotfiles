@@ -30,6 +30,7 @@ Plug 'rking/ag.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'whatyouhide/vim-gotham'
 Plug 'tomasr/molokai'
+Plug 'romainl/apprentice'
 
 call plug#end()
 
@@ -68,16 +69,16 @@ set backupdir=~/.vim_backups//
 
 "colour scheme
 set background=dark
-colorscheme solarized
+colorscheme apprentice
 
-" Highlight 80th column
-set colorcolumn=80
+" Highlight a column
+" set colorcolumn=72
 
 " Set tab settings for makefiles only
 autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
 autocmd BufLeave ?akefile* set expandtab|let &shiftwidth=shift_width|let &softtabstop=soft_tab_stop
 
-" set free source fortran 
+" set free source fortran
 let fortran_free_source=1
 
 "GUI Vim settings - gets rid of cruft around the edges
@@ -108,7 +109,7 @@ endif
 " --- set plugin variables ---
 
 " --- airline ---
-let g:airline_theme="solarized"
+let g:airline_theme="raven"
 
 " --- syntastic --- "
 " Syntastic options
@@ -122,12 +123,10 @@ set statusline+=%*
 nnoremap <F5> :SyntasticCheck<cr>
 let g:syntastic_debug = 0
 
-" --- remappings, basically ---
+" --- remappings ---
 
-"Allows you to use commas to start commands
 let mapleader = ","
 
-"No more colons
 nnoremap ; :
 
 "Fast quitting?
