@@ -22,7 +22,7 @@
     use_system_font = False
     cursor_color = "#eee8d5"
     foreground_color = "#eee8d5"
-    font = Source Code Pro Light 10
+    font = Source Code Pro Light 12
     background_color = "#002b36"
     scrollback_infinite = True
   [[solarized-light]]

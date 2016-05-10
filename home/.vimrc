@@ -105,6 +105,8 @@ set guifont=Source\ Code\ Pro
 " set highlight Normal ctermbg=None " Makes terminal vim transparent in Linux
 endif
 
+let fortran_free_source = 1
+
 " --- set plugin variables ---
 
 " - YCM -
