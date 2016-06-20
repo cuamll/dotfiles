@@ -20,7 +20,7 @@ Plug 'scrooloose/syntastic'
 " Plug 'ervandew/supertab'
 
 " LaTeX and wiki support
-Plug 'lervag/vimtex', { 'on': 'TexToggle', 'for': ['tex', 'bib'] }
+Plug 'lervag/vimtex'
 Plug 'vimwiki/vimwiki'
 
 " other misc stuff that I've found I actually use
