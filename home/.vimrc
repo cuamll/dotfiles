@@ -35,6 +35,7 @@ Plug 'rking/ag.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'whatyouhide/vim-gotham'
 Plug 'tomasr/molokai'
+Plug 'romainl/apprentice'
 
 call plug#end()
 filetype plugin indent on
@@ -74,10 +75,10 @@ set backupdir=~/.vim_backups//
 
 "colour scheme
 set background=dark
-colorscheme solarized
+colorscheme apprentice
 
 " Highlight 80th column
-set colorcolumn=80
+" set colorcolumn=80
 
 " Set tab settings for makefiles only
 autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
