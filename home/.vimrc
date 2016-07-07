@@ -74,11 +74,13 @@ set dir=~/.vim_backups//
 set backupdir=~/.vim_backups//
 
 "colour scheme
-set background=dark
+"set background=dark
 colorscheme apprentice
 
 " Highlight 80th column
 " set colorcolumn=80
+
+let fortran_free_source = 1
 
 " Set tab settings for makefiles only
 autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
