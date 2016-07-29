@@ -109,6 +109,14 @@ endif
 
 " --- set plugin variables ---
 
+" --- vimtex ---
+let g:vimtex_quickfix_ignored_warnings = [
+    \ 'Underfull',
+    \ 'csquotes',
+    \ 'Overfull',
+    \ 'specifier changed to',
+  \ ]
+
 " --- airline ---
 let g:airline_theme="raven"
 
