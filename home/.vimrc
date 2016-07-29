@@ -13,7 +13,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-abolish'
 
 " Code completion, syntax checking, etc.
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 
 " Latex plugin only when needed
 Plug 'lervag/vimtex'
@@ -24,7 +24,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
-Plug 'vim-scripts/a.vim'
+"Plug 'vim-scripts/a.vim'
 Plug 'rking/ag.vim'
 
 " Couple of colour schemes
@@ -48,8 +48,8 @@ set smarttab
 "Expand tabs as spaces
 set expandtab
 "Tab completion stuff, apparently?
-set wildmenu
-set wildmode=list:longest,full
+"set wildmenu
+"set wildmode=list:longest,full
 "Enable mouse support
 set mouse=a
 
@@ -65,6 +65,7 @@ set incsearch hlsearch
 set relativenumber
 set number
 
+" avoid swap files etc. piling up everywhere
 set dir=~/.vim_backups//
 set backupdir=~/.vim_backups//
 
@@ -82,9 +83,13 @@ autocmd BufLeave ?akefile* set expandtab|let &shiftwidth=shift_width|let &softta
 " set free source fortran
 let fortran_free_source=1
 
+" enable spell checking for tex files
+autocmd FileType tex setlocal spell
+setlocal spell spelllang=en_gb
+
 "GUI Vim settings - gets rid of cruft around the edges
 if has('gui_running')
-    let g:solarized_termtrans=1
+    "let g:solarized_termtrans=1
     :set guioptions -=r
     :set guioptions -=L
     :set guioptions -=b
@@ -122,7 +127,9 @@ let g:airline_theme="raven"
 
 " --- syntastic --- "
 " Syntastic options
+let g:syntastic_fortran_compiler = 'gfortran'
 let g:syntastic_python_checkers = ['pylint', 'python']
+let g:syntastic_fortran_checkers = ['gfortran']
 let g:syntastic_cpp_checkers = ['cppcheck', 'gcc', 'make']
 let g:syntastic_cpp_gcc_quiet_messages = { "level": "warnings",
                                          \ "file": ['\m^/opt/local','\m^/usr/include'] }
@@ -138,12 +145,10 @@ let mapleader = ","
 
 nnoremap ; :
 
-"Fast quitting?
 noremap <leader>qq :q!<cr>
-"Fast saving
 noremap <leader>w :w!<cr>
-"Save and quit
 noremap <leader>qw :wq<cr>
+
 "Easy edit of .vimrc
 noremap <leader>vrc :vsp! $MYVIMRC<cr>
 
@@ -152,7 +157,7 @@ noremap <leader>tn :tabn<cr>
 noremap <leader>tp :tabp<cr>
 
 "Press Ctrl-I to split lines:
-nnoremap <C-I> i<cr><Esc>
+nnoremap <C-I> i<cr><Esc>gk$
 
 "clear highlighting
 nnoremap <leader>c :nohl<cr>
@@ -160,12 +165,6 @@ nnoremap <leader>c :nohl<cr>
 "file browser ease
 nnoremap <leader>exp :Explore<cr>
 nnoremap <leader>sx :Sex!<cr>
-
-"Easy buffer movement:
-map <C-W><C-J> <C-W>j<C-W>_
-map <C-W><C-K> <C-W>k<C-W>_
-map <C-W><C-L> <C-W>l<C-W>|
-map <C-W><C-H> <C-W>h<C-W>|
 
 "Remap jj to escape in insert mode
 inoremap jj <Esc>
