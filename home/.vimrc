@@ -105,7 +105,7 @@ if has("win32")
     set bs=2
     syntax on
 elseif has("gui_macvim")
-    set guifont=Source\ Code\ Pro\ for\ Powerline
+    set guifont=Roboto\ Mono\ Thin\ for\ Powerline
 else
 set guifont=Source\ Code\ Pro
 " set highlight Normal ctermbg=None " Makes terminal vim transparent in Linux
