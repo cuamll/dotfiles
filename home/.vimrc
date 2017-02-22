@@ -39,6 +39,7 @@ call plug#end()
 
 " --- useful settings ---
 
+syntax on
 set copyindent
 set autoindent
 "Ignore case if pattern is all lowercase, otherwise case-sensitive
@@ -139,6 +140,9 @@ set statusline+=%#warningmsg#
 set statusline+=%*
 nnoremap <F5> :SyntasticCheck<cr>
 let g:syntastic_debug = 0
+
+" --- vimwiki ---
+"let g:vimwiki_list = [{'path': '~/research/', 'path_html': '~/research_html/'}]
 
 " --- remappings ---
 
