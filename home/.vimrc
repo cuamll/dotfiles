@@ -1,46 +1,45 @@
 set nocompatible
-filetype off
-
-"------- VUNDLE -------
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'
-
-" tpope is a G
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-vinegar'
-Plugin 'tpope/vim-abolish'
-
-" Code completion, syntax checking, etc.
-Plugin 'scrooloose/syntastic'
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'lervag/vimtex'
-
-" other misc stuff that I've found I actually use
-Plugin 'bling/vim-airline'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'vim-scripts/a.vim'
-Plugin 'rking/ag.vim'
-Plugin 'vimwiki/vimwiki'
-Plugin 'mattn/calendar-vim'
-
-" A couple of colour schemes for convenience mostly
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'whatyouhide/vim-gotham'
-Plugin 'tomasr/molokai'
-
-call vundle#end()
-
 filetype plugin indent on
 
-" -- END OF VUNDLE SETTINGS --
+"--- begin vim-plug ---
+
+call plug#begin()
+
+" tpope is a G
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-abolish'
+
+" Code completion, syntax checking, etc.
+" Plug 'scrooloose/syntastic'
+
+" Latex plugin only when needed
+Plug 'lervag/vimtex'
+Plug 'vimwiki/vimwiki'
+" , { 'on': 'TexToggle', 'for': ['tex', 'bib'] }
+
+" other misc stuff that I've found I actually use
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
+"Plug 'vim-scripts/a.vim'
+Plug 'rking/ag.vim'
+
+" Couple of colour schemes
+Plug 'altercation/vim-colors-solarized'
+Plug 'whatyouhide/vim-gotham'
+Plug 'tomasr/molokai'
+Plug 'romainl/apprentice'
+
+call plug#end()
+
+" --- end vim-plug ---
 
 " --- useful settings ---
 
+syntax on
 set copyindent
 set autoindent
 "Ignore case if pattern is all lowercase, otherwise case-sensitive
@@ -49,9 +48,9 @@ set smartcase
 set smarttab
 "Expand tabs as spaces
 set expandtab
-"Tab completion stuff, apparently
-set wildmenu
-set wildmode=list:longest,full
+"Tab completion stuff, apparently?
+"set wildmenu
+"set wildmode=list:longest,full
 "Enable mouse support
 set mouse=a
 
@@ -67,23 +66,31 @@ set incsearch hlsearch
 set relativenumber
 set number
 
+" avoid swap files etc. piling up everywhere
 set dir=~/.vim_backups//
 set backupdir=~/.vim_backups//
 
 "colour scheme
 set background=dark
-colorscheme solarized
+colorscheme apprentice
 
-" Highlight 80th column
-set colorcolumn=80
+" Highlight a column
+" set colorcolumn=72
 
 " Set tab settings for makefiles only
 autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
 autocmd BufLeave ?akefile* set expandtab|let &shiftwidth=shift_width|let &softtabstop=soft_tab_stop
 
+" set free source fortran
+let fortran_free_source=1
+
+" enable spell checking for tex files
+autocmd FileType tex setlocal spell
+setlocal spell spelllang=en_gb
+
 "GUI Vim settings - gets rid of cruft around the edges
 if has('gui_running')
-    let g:solarized_termtrans=1
+    "let g:solarized_termtrans=1
     :set guioptions -=r
     :set guioptions -=L
     :set guioptions -=b
@@ -102,73 +109,51 @@ if has("win32")
 elseif has("gui_macvim")
     set guifont=Source\ Code\ Pro\ for\ Powerline
 else
-set guifont=Source\ Code\ Pro
+set guifont=Source\ Code\ Pro\ for\ Powerline
 " set highlight Normal ctermbg=None " Makes terminal vim transparent in Linux
 endif
 
-let fortran_free_source = 1
-
 " --- set plugin variables ---
 
-" - YCM -
-
-" Give global extra_conf.py for YouCompleteMe as a fallback
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_autoclose_preview_window_after_completion = 1
-
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<tab>'
-
-let g:ycm_error_symbol = '!!'
-let g:ycm_warning_symbol = '??'
-
-" Remap YCM GoTo command to something less ridiculous
-nmap <leader>jd :YcmCompleter GoTo<CR>
-nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
-
-" Syntastic options
-" let g:syntastic_python_checkers = ['pylint', 'python']
-" let g:syntastic_cpp_checkers = ['cppcheck', 'gcc', 'make']
-" let g:syntastic_cpp_gcc_quiet_messages = { "level": "warnings",
-"                                          \ "file": ['\m^/opt/local','\m^/usr/include'] }
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" nnoremap <F5> :SyntasticCheck<cr>
-" let g:syntastic_debug = 0
-
-" CtrlP default settings
-nnoremap <leader>p :CtrlPMixed<CR>
-let g:ctrlp_map = ''
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_open_new_file = 'v'
-
-let g:vimwiki_list = [{'path': '~/private/wiki'}]
-
+" --- vimtex ---
 let g:vimtex_quickfix_ignored_warnings = [
     \ 'Underfull',
+    \ 'csquotes',
     \ 'Overfull',
     \ 'specifier changed to',
-    \ 'preliminary',
-    \ 'xparse/redefine-command',
+    \ '\float@addtolists',
   \ ]
 
-" --- remappings, basically ---
+" --- airline ---
+let g:airline_theme="raven"
 
-"Allows you to use commas to start commands
+" --- syntastic --- "
+" Syntastic options
+"let g:syntastic_fortran_compiler = 'gfortran'
+"let g:syntastic_python_checkers = ['pylint', 'python']
+"let g:syntastic_fortran_checkers = ['gfortran']
+"let g:syntastic_cpp_checkers = ['cppcheck', 'gcc', 'make']
+"let g:syntastic_cpp_gcc_quiet_messages = { level: warnings",
+                                        " \ file": ['\m^/opt/local','\m^/usr/include'] }
+set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+nnoremap <F5> :SyntasticCheck<cr>
+let g:syntastic_debug = 0
+
+" --- vimwiki ---
+"let g:vimwiki_list = [{'path': '~/research/', 'path_html': '~/research_html/'}]
+
+" --- remappings ---
+
 let mapleader = ","
 
-"No more colons
 nnoremap ; :
- 
-"Fast quitting?
+
 noremap <leader>qq :q!<cr>
-"Fast saving
 noremap <leader>w :w!<cr>
-"Save and quit
 noremap <leader>qw :wq<cr>
+
 "Easy edit of .vimrc
 noremap <leader>vrc :vsp! $MYVIMRC<cr>
 
@@ -177,21 +162,14 @@ noremap <leader>tn :tabn<cr>
 noremap <leader>tp :tabp<cr>
 
 "Press Ctrl-I to split lines:
-nnoremap <C-I> i<cr><Esc>
+nnoremap <C-I> i<cr><Esc>gk$
 
 "clear highlighting
 nnoremap <leader>c :nohl<cr>
 
 "file browser ease
 nnoremap <leader>exp :Explore<cr>
-nnoremap <leader>exw :vsp /home/callum/Dropbox<cr>
 nnoremap <leader>sx :Sex!<cr>
-
-"Easy buffer movement:
-map <C-W><C-J> <C-W>j<C-W>_
-map <C-W><C-K> <C-W>k<C-W>_
-map <C-W><C-L> <C-W>l<C-W>|
-map <C-W><C-H> <C-W>h<C-W>|
 
 "Remap jj to escape in insert mode
 inoremap jj <Esc>
