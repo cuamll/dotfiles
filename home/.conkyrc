@@ -55,13 +55,13 @@ default_color FFFFCC
 own_window_transparent yes
 
 # Text alignment, other possible values are commented
-#alignment top_right
-alignment mm
+alignment top_right
+#alignment mm
 #alignment bottom_right
 
 # Gap between borders of screen and text
-gap_x -350
-gap_y -300
+gap_x 100
+gap_y 80
 
 ${execi 300 curl -s "http://weather.yahooapis.com/forecastrss?w=44418&u=c" -o ~/.cache/weather.xml}
 # stuff after ‘TEXT’ will be formatted on screen
@@ -76,7 +76,7 @@ ${font Noto Serif:size=14}${color 888888}${alignr}${execi 60 date +"%A %d %B" | 
 ${font Noto Serif:size=22}${alignr} ${time %H:%M}${font Noto Serif:size=11}
 #${font Noto Serif:size=14}${color 888888}${alignr}battery: ${battery_percent}%${font Noto Serif:size=12}
 
-${font Noto Serif:size=14}${alignr}${execi 60 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "text=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1' | tr '[:upper:]' '[:lower:]' }, ${execi 60 grep "yweather:condition" ~/.cache/weather.xml | grep -o "temp=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}${font Noto Serif:size=12}
+${font Noto Serif:size=14}${alignr}${execi 60 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "text=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1' | tr '[:upper:]' '[:lower:]' } ${execi 60 grep "yweather:condition" ~/.cache/weather.xml | grep -o "temp=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}${font Noto Serif:size=12}
 #${font Noto Serif:size=12}${alignr}tomorrow: ${execi 60 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "text=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==2' | tr '[:upper:]' '[:lower:]' }, ${execi 60 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "high=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==2'}${font Noto Serif:size=12}
 
 ${font Noto Serif:size=14}${alignr}${color 888888}${execi 5 python2 /home/callum/.nowplaying.py -t}

@@ -18,6 +18,7 @@ Plugin 'tpope/vim-abolish'
 " Code completion, syntax checking, etc.
 Plugin 'scrooloose/syntastic'
 " Plugin 'Valloric/YouCompleteMe'
+Plugin 'lervag/vimtex'
 
 " other misc stuff that I've found I actually use
 Plugin 'bling/vim-airline'
@@ -144,7 +145,15 @@ let g:ctrlp_map = ''
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_open_new_file = 'v'
 
-let g:vimwiki_list = [{'path': '~/private/'}]
+let g:vimwiki_list = [{'path': '~/private/wiki'}]
+
+let g:vimtex_quickfix_ignored_warnings = [
+    \ 'Underfull',
+    \ 'Overfull',
+    \ 'specifier changed to',
+    \ 'preliminary',
+    \ 'xparse/redefine-command',
+  \ ]
 
 " --- remappings, basically ---
 
