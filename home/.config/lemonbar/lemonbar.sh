@@ -24,18 +24,18 @@ while true; do
   output="${output}%{c}"
 
   # Pianobar
-  if [[ "$(pgrep pianobar)" != '' ]]; then
-    while read -r line; do
-      if [[ "$line" != *"Station"* ]]; then
-        song=$(echo "$line" | cut -d \" -f 2)
-        artist=$(echo "$line" | cut -d \" -f 4)
-        output="${output}%{A:echo -n \" \" > ~/.config/pianobar/ctl:}%{A3:echo -n \"n\" > ~/.config/pianobar/ctl:}"
-        output="${output}%{F#051525}\"${song}\"%{F#888888} by %{F#051525}\"${artist}\"%{F#888888}"
-        output="${output}%{A}%{A}"
-        break
-      fi
-    done <<< "$(tac ~/.config/pianobar/out | grep '|')"
-  fi
+  #if [[ "$(pgrep pianobar)" != '' ]]; then
+  #  while read -r line; do
+  #    if [[ "$line" != *"Station"* ]]; then
+  #      song=$(echo "$line" | cut -d \" -f 2)
+  #      artist=$(echo "$line" | cut -d \" -f 4)
+  #      output="${output}%{A:echo -n \" \" > ~/.config/pianobar/ctl:}%{A3:echo -n \"n\" > ~/.config/pianobar/ctl:}"
+  #      output="${output}%{F#051525}\"${song}\"%{F#888888} by %{F#051525}\"${artist}\"%{F#888888}"
+  #      output="${output}%{A}%{A}"
+  #      break
+  #    fi
+  #  done <<< "$(tac ~/.config/pianobar/out | grep '|')"
+  #fi
 
 
   # Right Align
@@ -45,15 +45,15 @@ while true; do
   wifi_icon=
   essid=$(iwgetid | cut -d \" -f 2)
   if [[ "$essid" != "" ]]; then
-    output="${output}%{T2}${wifi_icon}%{T1}%{F#888888}wifi %{F#051525}$(iwconfig wlan0 | grep Quality | cut -d = -f 2 | cut -d / -f 1)%"
+    output="${output}%{T2}${wifi_icon}%{T1}%{F#888888}wifi %{F#051525}$(iwconfig wls5 | grep Quality | cut -d = -f 2 | cut -d / -f 1)%"
   fi
 
   output="${output}       "
 
   # Volume
-  vol_icon=
-  output="${output}%{F#888888}%{T1}${vol_icon}%{T1} %{F#051525}$(amixer -D pulse | grep Front\ Left:\ Playback | cut -d \  -f 7 | cut -d [ -f 2 | cut -d ] -f 1)%{F#888888}"
-  output="${output} "
+  #vol_icon=
+  #output="${output}%{F#888888}%{T1}${vol_icon}%{T1} %{F#051525}$(amixer -D pulse | grep Front\ Left:\ Playback | cut -d \  -f 7 | cut -d [ -f 2 | cut -d ] -f 1)%{F#888888}"
+  #output="${output} "
 
   # Battery
   # output="${output}%{F#888888}Battery%{F#051525} $(acpi | cut -d , -f 2 | cut -d " " -f 2)"
@@ -66,7 +66,8 @@ while true; do
   output="${output}%{F#888888}     %{F#051525}%{T2}${clock_icon}%{T1}${date}"
 
   echo -e " ${output} "; sleep $DELAY;
-done | lemonbar -f "Roboto Mono-8" -f "FontAwesome-8" -d -g 1800x24+60+24 -B \#bbdde5eb -F \#cccccc | /bin/bash
+done | lemonbar -f "Roboto Mono-8" -f "FontAwesome-8" -d -g 1848x24+36+12 -B \#bbdde5eb -F \#cccccc | /bin/bash
+# after .xinitrc is sorted out and it's starting in 1080p, the line above can be changed to something like 1848x24+36+24
 
 ##!/bin/zsh
 #
