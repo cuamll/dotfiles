@@ -14,6 +14,7 @@ Plug 'tpope/vim-abolish'
 
 " Code completion, syntax checking, etc.
 " Plug 'scrooloose/syntastic'
+" Plug 'w0rp/ale'
 
 " Latex plugin only when needed
 Plug 'lervag/vimtex'

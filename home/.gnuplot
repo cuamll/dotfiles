@@ -2,7 +2,7 @@
 set macros
 
 # search for functions or data files in these directories
-# set loadpath '/usr/local/lib/gnuplot'
+set loadpath '~/.config/gnuplot'
 
 # add default line colors
 set style line 1 lc rgb '#C4145E' lt 1 lw 3 pt 2   # red
