@@ -5,34 +5,32 @@ filetype plugin indent on
 
 call plug#begin()
 
-" tpope is a G
+" obviously
 Plug 'tpope/vim-sensible'
+
+Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-abolish'
-
-" Code completion, syntax checking, etc.
-" Plug 'scrooloose/syntastic'
-" Plug 'w0rp/ale'
-
-" Latex plugin only when needed
-Plug 'lervag/vimtex'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-vinegar'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'vimwiki/vimwiki'
+Plug 'lervag/vimtex'
 " , { 'on': 'TexToggle', 'for': ['tex', 'bib'] }
 
-" other misc stuff that I've found I actually use
+" considering getting rid of these
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
-"Plug 'vim-scripts/a.vim'
-Plug 'rking/ag.vim'
 
 " Couple of colour schemes
 Plug 'altercation/vim-colors-solarized'
 Plug 'whatyouhide/vim-gotham'
 Plug 'tomasr/molokai'
 Plug 'romainl/apprentice'
+Plug 'junegunn/seoul256.vim'
 
 call plug#end()
 
@@ -40,28 +38,18 @@ call plug#end()
 
 " --- useful settings ---
 
-syntax on
+syntax enable
 set copyindent
 set autoindent
-"Ignore case if pattern is all lowercase, otherwise case-sensitive
 set smartcase
-"insert tabs at line start according to shiftwidth
 set smarttab
-"Expand tabs as spaces
 set expandtab
-"Tab completion stuff, apparently?
-"set wildmenu
-"set wildmode=list:longest,full
-"Enable mouse support
+set splitright
 set mouse=a
-
-let shift_width = 2
-let tab_stop = 2
-let soft_tab_stop = 2
-
-let &shiftwidth = shift_width
-let &softtabstop = soft_tab_stop
 set incsearch hlsearch
+" Tab completion stuff? Could probably remove
+set wildmenu
+set wildmode=list:longest,full
 
 "Absolute number for current line, relative for others
 set relativenumber
@@ -76,9 +64,15 @@ set background=dark
 colorscheme apprentice
 
 " Highlight a column
-" set colorcolumn=72
+set colorcolumn=80
 
-" Set tab settings for makefiles only
+" Tab settings
+let shift_width = 2
+let tab_stop = 2
+let soft_tab_stop = 2
+let &shiftwidth = shift_width
+let &softtabstop = soft_tab_stop
+" Sort out makefile tab requirements
 autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
 autocmd BufLeave ?akefile* set expandtab|let &shiftwidth=shift_width|let &softtabstop=soft_tab_stop
 
@@ -86,8 +80,8 @@ autocmd BufLeave ?akefile* set expandtab|let &shiftwidth=shift_width|let &softta
 let fortran_free_source=1
 
 " enable spell checking for tex files
-autocmd FileType tex setlocal spell
-setlocal spell spelllang=en_gb
+autocmd FileType tex,wiki,txt,md setlocal spell spelllang=en_gb
+"setlocal spell spelllang=en_gb
 
 "GUI Vim settings - gets rid of cruft around the edges
 if has('gui_running')
@@ -130,10 +124,10 @@ let g:airline_theme="raven"
 
 " --- syntastic --- "
 " Syntastic options
-"let g:syntastic_fortran_compiler = 'gfortran'
-"let g:syntastic_python_checkers = ['pylint', 'python']
-"let g:syntastic_fortran_checkers = ['gfortran']
-"let g:syntastic_cpp_checkers = ['cppcheck', 'gcc', 'make']
+let g:syntastic_fortran_compiler = 'gfortran'
+let g:syntastic_fortran_checkers = ['gfortran']
+let g:syntastic_python_checkers = ['pylint', 'python']
+let g:syntastic_cpp_checkers = ['cppcheck', 'gcc', 'make']
 "let g:syntastic_cpp_gcc_quiet_messages = { level: warnings",
                                         " \ file": ['\m^/opt/local','\m^/usr/include'] }
 set statusline+=%#warningmsg#
@@ -148,33 +142,24 @@ let g:syntastic_debug = 0
 " --- remappings ---
 
 let mapleader = ","
-
 nnoremap ; :
-
 noremap <leader>qq :q!<cr>
 noremap <leader>w :w!<cr>
 noremap <leader>qw :wq<cr>
-
-"Easy edit of .vimrc
-noremap <leader>vrc :vsp! $MYVIMRC<cr>
+inoremap jj <Esc>
+"Stops vim from 'jumping over' wrapped lines
+nnoremap j gj
+nnoremap k gk
+nnoremap <leader><Space> :nohl<cr>
 
 "easy switching of tabs
 noremap <leader>tn :tabn<cr>
 noremap <leader>tp :tabp<cr>
-
+"Easy edit of .vimrc
+noremap <leader>vrc :vsp! $MYVIMRC<cr>
 "Press Ctrl-I to split lines:
 nnoremap <C-I> i<cr><Esc>gk$
-
-"clear highlighting
-nnoremap <leader>c :nohl<cr>
-
 "file browser ease
 nnoremap <leader>exp :Explore<cr>
 nnoremap <leader>sx :Sex!<cr>
 
-"Remap jj to escape in insert mode
-inoremap jj <Esc>
-
-"Stops vim from 'jumping over' wrapped lines
-nnoremap j gj
-nnoremap k gk
