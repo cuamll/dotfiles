@@ -8,7 +8,7 @@ call plug#begin()
 " obviously
 Plug 'tpope/vim-sensible'
 
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
@@ -61,7 +61,9 @@ set backupdir=~/.vim_backups//
 
 "colour scheme
 set background=dark
-colorscheme apprentice
+let g:seoul256_background = 235
+colo seoul256
+"colo apprentice
 
 " Highlight a column
 set colorcolumn=80
@@ -86,9 +88,10 @@ autocmd FileType tex,wiki,txt,md setlocal spell spelllang=en_gb
 "GUI Vim settings - gets rid of cruft around the edges
 if has('gui_running')
     "let g:solarized_termtrans=1
-    :set guioptions -=r
-    :set guioptions -=L
-    :set guioptions -=b
+    ":set guioptions -=r
+    ":set guioptions -=L
+    ":set guioptions -=b
+    :set guioptions =c
 endif
 
 "Makes mouse reporting work properly on wide screens
@@ -124,17 +127,21 @@ let g:airline_theme="raven"
 
 " --- syntastic --- "
 " Syntastic options
-let g:syntastic_fortran_compiler = 'gfortran'
-let g:syntastic_fortran_checkers = ['gfortran']
-let g:syntastic_python_checkers = ['pylint', 'python']
-let g:syntastic_cpp_checkers = ['cppcheck', 'gcc', 'make']
+"let g:syntastic_fortran_compiler = 'gfortran'
+"let g:syntastic_fortran_checkers = ['gfortran']
+"let g:syntastic_python_checkers = ['pylint', 'python']
+"let g:syntastic_cpp_checkers = ['cppcheck', 'gcc', 'make']
 "let g:syntastic_cpp_gcc_quiet_messages = { level: warnings",
                                         " \ file": ['\m^/opt/local','\m^/usr/include'] }
-set statusline+=%#warningmsg#
+"nnoremap <F5> :SyntasticCheck<cr>
+"let g:syntastic_debug = 0
 "set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%#warningmsg#
 set statusline+=%*
-nnoremap <F5> :SyntasticCheck<cr>
-let g:syntastic_debug = 0
+
+let g:ale_fortran_gcc_executable = 'gfortran-mp-5'
+let g:ale_fortran_gcc_options = '-Jmod -fopenmp'
+let g:ale_fortran_gcc_use_free_form = 1
 
 " --- vimwiki ---
 "let g:vimwiki_list = [{'path': '~/research/', 'path_html': '~/research_html/'}]
