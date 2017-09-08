@@ -18,6 +18,8 @@
  alias tdvp="cd /home/callum/Dropbox/TDVP_CPS"
  alias wien="pushd ~/Dropbox/code/wien"
 
+ alias q='QHOME=~/q rlwrap -r ~/q/m32/q'
+
 if [ -z ${SHORT_HOST+x} ];
 then
 	:
