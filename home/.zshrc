@@ -136,3 +136,11 @@ fi
 mupdf() {
     mupdf-x11 "$*" &
 }
+
+# this needs testing
+plt() {
+  gnuplot -e "OUTPUT='$2.tex'" $1 
+  latex $2.tex
+  dvips $2.dvi
+  ps2pdf $2.ps
+}

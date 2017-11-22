@@ -125,22 +125,11 @@ let g:vimtex_quickfix_ignored_warnings = [
 " --- airline ---
 let g:airline_theme="raven"
 
-" --- syntastic --- "
-" Syntastic options
-"let g:syntastic_fortran_compiler = 'gfortran'
-"let g:syntastic_fortran_checkers = ['gfortran']
-"let g:syntastic_python_checkers = ['pylint', 'python']
-"let g:syntastic_cpp_checkers = ['cppcheck', 'gcc', 'make']
-"let g:syntastic_cpp_gcc_quiet_messages = { level: warnings",
-                                        " \ file": ['\m^/opt/local','\m^/usr/include'] }
-"nnoremap <F5> :SyntasticCheck<cr>
-"let g:syntastic_debug = 0
-"set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%#warningmsg#
 set statusline+=%*
 
 let g:ale_fortran_gcc_executable = 'gfortran-mp-5'
-let g:ale_fortran_gcc_options = '-Jmod -fopenmp'
+let g:ale_fortran_gcc_options = '-Jmod -std=f2003 -fopenmp'
 let g:ale_fortran_gcc_use_free_form = 1
 
 " --- vimwiki ---
