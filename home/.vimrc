@@ -1,34 +1,23 @@
-set nocompatible
-filetype plugin indent on
-
-"--- begin vim-plug ---
+"--- plugins ---
 
 call plug#begin()
 
-" obviously
+" obligatory tpope section
 Plug 'tpope/vim-sensible'
-
-"Plug 'scrooloose/syntastic'
-Plug 'w0rp/ale'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'vimwiki/vimwiki'
-Plug 'lervag/vimtex'
-" , { 'on': 'TexToggle', 'for': ['tex', 'bib'] }
 
-" considering getting rid of these
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'w0rp/ale'
+Plug 'vimwiki/vimwiki'
+Plug 'lervag/vimtex' , { 'on': 'TexToggle', 'for': ['tex', 'bib'] }
+Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 
-" Couple of colour schemes
-Plug 'altercation/vim-colors-solarized'
+" Colour schemes
 Plug 'whatyouhide/vim-gotham'
-Plug 'tomasr/molokai'
 Plug 'romainl/apprentice'
 Plug 'junegunn/seoul256.vim'
 
@@ -39,21 +28,14 @@ call plug#end()
 " --- useful settings ---
 
 syntax enable
-set copyindent
-set autoindent
-set smartcase
-set smarttab
-set expandtab
+set copyindent autoindent
+set smartcase smarttab expandtab
 set splitright
 set mouse=a
 set incsearch hlsearch
-" Tab completion stuff? Could probably remove
-set wildmenu
-set wildmode=list:longest,full
 
 "Absolute number for current line, relative for others
-set relativenumber
-set number
+set relativenumber number
 
 " avoid swap files etc. piling up everywhere
 set dir=~/.vim_backups//
@@ -63,7 +45,6 @@ set backupdir=~/.vim_backups//
 set background=dark
 let g:seoul256_background = 235
 colo seoul256
-"colo apprentice
 
 " Highlight a column
 set colorcolumn=80
@@ -75,22 +56,18 @@ let soft_tab_stop = 2
 let &shiftwidth = shift_width
 let &softtabstop = soft_tab_stop
 " Sort out makefile tab requirements
-autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
-autocmd BufLeave ?akefile* set expandtab|let &shiftwidth=shift_width|let &softtabstop=soft_tab_stop
-
-" set free source fortran
-let fortran_free_source=1
+augroup Maketabs
+  " clear events -- not sure if this is necessary in this case?
+  autocmd! Maketabs
+  autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
+  autocmd BufLeave ?akefile* set expandtab|let &shiftwidth=shift_width|let &softtabstop=soft_tab_stop
+augroup END
 
 " enable spell checking for tex files
 autocmd FileType tex,wiki,txt,md setlocal spell spelllang=en_gb
-"setlocal spell spelllang=en_gb
 
-"GUI Vim settings - gets rid of cruft around the edges
+"remove GUI cruft
 if has('gui_running')
-    "let g:solarized_termtrans=1
-    ":set guioptions -=r
-    ":set guioptions -=L
-    ":set guioptions -=b
     :set guioptions =c
 endif
 
@@ -110,10 +87,22 @@ else
 set guifont=Source\ Code\ Pro\ for\ Powerline
 " set highlight Normal ctermbg=None " Makes terminal vim transparent in Linux
 endif
-
+"
 " --- set plugin variables ---
 
-" --- vimtex ---
+" git branch information in lightline: taken from :h lightline example
+let g:lightline = {
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ],
+        \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+        \ },
+        \ 'component_function': {
+        \   'gitbranch': 'fugitive#head'
+        \ },
+        \ }
+
+let g:lightline.colorscheme = 'seoul256'
+
 let g:vimtex_quickfix_ignored_warnings = [
     \ 'Underfull',
     \ 'csquotes',
@@ -122,18 +111,10 @@ let g:vimtex_quickfix_ignored_warnings = [
     \ '\float@addtolists',
   \ ]
 
-" --- airline ---
-let g:airline_theme="raven"
-
-set statusline+=%#warningmsg#
-set statusline+=%*
-
+let fortran_free_source=1
 let g:ale_fortran_gcc_executable = 'gfortran-mp-5'
 let g:ale_fortran_gcc_options = '-Jmod -std=f2003 -fopenmp'
 let g:ale_fortran_gcc_use_free_form = 1
-
-" --- vimwiki ---
-"let g:vimwiki_list = [{'path': '~/research/', 'path_html': '~/research_html/'}]
 
 " --- remappings ---
 
@@ -158,4 +139,3 @@ nnoremap <C-I> i<cr><Esc>gk$
 "file browser ease
 nnoremap <leader>exp :Explore<cr>
 nnoremap <leader>sx :Sex!<cr>
-
