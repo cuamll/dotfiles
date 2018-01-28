@@ -1,13 +1,9 @@
 # ls aliases
-# alias ls="ls --color=auto"
- alias ll="ls -lHA"
- alias la="ls -hA"
+alias ls="ls --color=auto"
+alias ll="ls -lHA"
+alias la="ls -hA"
 
-# start matlab; turn off horizontal scrolling because it whinges otherwise
- alias guimat="synclient HorizTwoFingerScroll=0 && /usr/local/MATLAB/R2014a/bin/matlab & disown"
-
-# mount windows partition on big laptop 
- alias mwin="mount /dev/sda4"
+alias remake="make cleaner && make"
 
 # open sesame
 alias jno="encfs ~/.private ~/private"
@@ -15,31 +11,15 @@ alias jno="encfs ~/.private ~/private"
 alias jnc="fusermount -u ~/private"
 
 # various places i cd to a lot
- alias dls="cd /home/callum/Downloads"
- alias videos="cd /home/callum/videos"
- alias dropbox="cd /home/callum/Dropbox"
- alias summer="cd /home/callum/Dropbox/Public/work/4th\ year/Summer"
- alias code="cd /home/callum/Dropbox/code"
- alias tdvp="cd /home/callum/Dropbox/TDVP_CPS"
- alias wien="pushd ~/Dropbox/code/wien"
+alias dropbox="cd /home/callum/Dropbox"
+alias gc2d="pushd ~/code/mr/gc2d"
+alias 2d="pushd ~/code/mr/2d"
+
+alias q='QHOME=~/q rlwrap -r ~/q/m32/q'
 
 if [ -z ${SHORT_HOST+x} ];
 then
 	:
-elif [ "$SHORT_HOST" = "pluto" ]; then
+elif [ "$SHORT_HOST" = "scandium" ]; then
 alias vim=/Applications/MacPorts/MacVim.app/Contents/MacOS/Vim
 fi
-
-# copy current tmux buffer to system pasteboard
- alias cptm="tmux save-buffer - | pbcopy"
-
-# i think this one's kind of obvious
- alias ipy="ipython qtconsole --pylab=inline --style=solarized & disown"
-
-# this one just doesn't work at all and i've given up trying to figure out why
- # alias fuck="sudo $(fc -ln -1)"
-
-# if i forget to mount the windows partition,
-# clementine marks anything i try to play as unavailable.
-# this undoes that; do killall clementine first though.
- alias clemref="sqlite3 .config/Clementine/clementine.db 'update songs set unavailable=0;'"

@@ -1,70 +1,40 @@
-set nocompatible
-filetype plugin indent on
-
-"--- begin vim-plug ---
+"--- plugins ---
 
 call plug#begin()
 
-" tpope is a G
+" obligatory tpope section
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-vinegar'
 
-" Code completion, syntax checking, etc.
-" Plug 'scrooloose/syntastic'
-
-" Latex plugin only when needed
-Plug 'lervag/vimtex'
+Plug 'w0rp/ale'
 Plug 'vimwiki/vimwiki'
-" , { 'on': 'TexToggle', 'for': ['tex', 'bib'] }
-
-" other misc stuff that I've found I actually use
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'lervag/vimtex' , { 'on': 'TexToggle', 'for': ['tex', 'bib'] }
+Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
-"Plug 'vim-scripts/a.vim'
-Plug 'rking/ag.vim'
 
-" Couple of colour schemes
-Plug 'altercation/vim-colors-solarized'
+" Colour schemes
 Plug 'whatyouhide/vim-gotham'
-Plug 'tomasr/molokai'
 Plug 'romainl/apprentice'
+Plug 'junegunn/seoul256.vim'
 
 call plug#end()
 
 " --- end vim-plug ---
 
 " --- useful settings ---
-
-syntax on
-set copyindent
-set autoindent
-"Ignore case if pattern is all lowercase, otherwise case-sensitive
-set smartcase
-"insert tabs at line start according to shiftwidth
-set smarttab
-"Expand tabs as spaces
-set expandtab
-"Tab completion stuff, apparently?
-"set wildmenu
-"set wildmode=list:longest,full
-"Enable mouse support
+syntax enable
+set copyindent autoindent
+set smartcase smarttab expandtab
+set splitright
 set mouse=a
-
-let shift_width = 2
-let tab_stop = 2
-let soft_tab_stop = 2
-
-let &shiftwidth = shift_width
-let &softtabstop = soft_tab_stop
 set incsearch hlsearch
 
 "Absolute number for current line, relative for others
-set relativenumber
-set number
+set relativenumber number
 
 " avoid swap files etc. piling up everywhere
 set dir=~/.vim_backups//
@@ -72,28 +42,32 @@ set backupdir=~/.vim_backups//
 
 "colour scheme
 set background=dark
-colorscheme apprentice
+let g:seoul256_background = 235
+colo seoul256
 
 " Highlight a column
-" set colorcolumn=72
+set colorcolumn=80
 
-" Set tab settings for makefiles only
-autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
-autocmd BufLeave ?akefile* set expandtab|let &shiftwidth=shift_width|let &softtabstop=soft_tab_stop
-
-" set free source fortran
-let fortran_free_source=1
+" Tab settings
+let shift_width = 2
+let tab_stop = 2
+let soft_tab_stop = 2
+let &shiftwidth = shift_width
+let &softtabstop = soft_tab_stop
+" Sort out makefile tab requirements
+augroup Maketabs
+  " clear events -- not sure if this is necessary in this case?
+  autocmd! Maketabs
+  autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
+  autocmd BufLeave ?akefile* set expandtab|let &shiftwidth=shift_width|let &softtabstop=soft_tab_stop
+augroup END
 
 " enable spell checking for tex files
-autocmd FileType tex setlocal spell
-setlocal spell spelllang=en_gb
+autocmd FileType tex,wiki,txt,md setlocal spell spelllang=en_gb
 
-"GUI Vim settings - gets rid of cruft around the edges
+"remove GUI cruft
 if has('gui_running')
-    "let g:solarized_termtrans=1
-    :set guioptions -=r
-    :set guioptions -=L
-    :set guioptions -=b
+    :set guioptions =c
 endif
 
 "Makes mouse reporting work properly on wide screens
@@ -112,10 +86,22 @@ else
 set guifont=Source\ Code\ Pro\ for\ Powerline
 " set highlight Normal ctermbg=None " Makes terminal vim transparent in Linux
 endif
-
+"
 " --- set plugin variables ---
 
-" --- vimtex ---
+" git branch information in lightline: taken from :h lightline example
+let g:lightline = {
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ],
+        \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+        \ },
+        \ 'component_function': {
+        \   'gitbranch': 'fugitive#head'
+        \ },
+        \ }
+
+let g:lightline.colorscheme = 'seoul256'
+
 let g:vimtex_quickfix_ignored_warnings = [
     \ 'Underfull',
     \ 'csquotes',
@@ -124,56 +110,31 @@ let g:vimtex_quickfix_ignored_warnings = [
     \ '\float@addtolists',
   \ ]
 
-" --- airline ---
-let g:airline_theme="raven"
-
-" --- syntastic --- "
-" Syntastic options
-"let g:syntastic_fortran_compiler = 'gfortran'
-"let g:syntastic_python_checkers = ['pylint', 'python']
-"let g:syntastic_fortran_checkers = ['gfortran']
-"let g:syntastic_cpp_checkers = ['cppcheck', 'gcc', 'make']
-"let g:syntastic_cpp_gcc_quiet_messages = { level: warnings",
-                                        " \ file": ['\m^/opt/local','\m^/usr/include'] }
-set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-nnoremap <F5> :SyntasticCheck<cr>
-let g:syntastic_debug = 0
-
-" --- vimwiki ---
-"let g:vimwiki_list = [{'path': '~/research/', 'path_html': '~/research_html/'}]
+let fortran_free_source=1
+let g:ale_fortran_gcc_executable = 'gfortran'
+let g:ale_fortran_gcc_options = '-Jmod -std=f2003 -fopenmp'
+let g:ale_fortran_gcc_use_free_form = 1
 
 " --- remappings ---
 
 let mapleader = ","
-
 nnoremap ; :
-
 noremap <leader>qq :q!<cr>
 noremap <leader>w :w!<cr>
 noremap <leader>qw :wq<cr>
-
-"Easy edit of .vimrc
-noremap <leader>vrc :vsp! $MYVIMRC<cr>
+inoremap jj <Esc>
+"Stops vim from 'jumping over' wrapped lines
+nnoremap j gj
+nnoremap k gk
+nnoremap <leader><Space> :nohl<cr>
 
 "easy switching of tabs
 noremap <leader>tn :tabn<cr>
 noremap <leader>tp :tabp<cr>
-
+"Easy edit of .vimrc
+noremap <leader>vrc :vsp! $MYVIMRC<cr>
 "Press Ctrl-I to split lines:
 nnoremap <C-I> i<cr><Esc>gk$
-
-"clear highlighting
-nnoremap <leader>c :nohl<cr>
-
 "file browser ease
 nnoremap <leader>exp :Explore<cr>
 nnoremap <leader>sx :Sex!<cr>
-
-"Remap jj to escape in insert mode
-inoremap jj <Esc>
-
-"Stops vim from 'jumping over' wrapped lines
-nnoremap j gj
-nnoremap k gk
