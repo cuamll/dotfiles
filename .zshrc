@@ -16,7 +16,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export PATH="//usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/callum/texlive"
-export PATH="/usr/local/include:$PATH"
+export PATH="/usr/local/include:/home/callum/anaconda3/bin:$PATH"
 
 export EDITOR='vim'
 
