@@ -34,14 +34,24 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 # gnuplot -- plot to latex and compile to pdf
-# add "keep" as third argument to keep aux files
+# add "keep" as final argument to keep aux files
 # otherwise the function deletes them
 plt() {
-  gnuplot -e "OUTPUT='$2.tex'" "$1"
+  gnuplot -e "OUTPUT='$2.tex'; FILE='$2.dat'; PLOTTITLE='$3'; LINETITLE='$4'; XLABEL='$5'; YLABEL='$6'" "$1"
   latex "$2".tex
   dvips "$2".dvi
   ps2pdf "$2".ps
-  if [[ "$3" != "keep" ]]; then
+  if [[ "$7" != "keep" ]]; then
+    rm -f "$2".log "$2".aux "$2".dvi "$2".ps "$2"-inc.eps
+  fi
+}
+
+plt_gen() {
+  gnuplot -e "OUTPUT='$2.tex'; FILE='$2.dat'; $3" "$1"
+  latex "$2".tex
+  dvips "$2".dvi
+  ps2pdf "$2".ps
+  if [[ "$4" != "keep" ]]; then
     rm -f "$2".log "$2".aux "$2".dvi "$2".ps "$2"-inc.eps
   fi
 }

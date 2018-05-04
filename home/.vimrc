@@ -12,7 +12,8 @@ Plug 'tpope/vim-vinegar'
 
 Plug 'w0rp/ale'
 Plug 'vimwiki/vimwiki'
-Plug 'lervag/vimtex' , { 'on': 'TexToggle', 'for': ['tex', 'bib'] }
+" Plug 'lervag/vimtex' , { 'on': 'TexToggle', 'for': ['tex', 'bib'] }
+Plug 'lervag/vimtex'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 
@@ -103,6 +104,7 @@ let g:lightline = {
 
 let g:lightline.colorscheme = 'seoul256'
 
+let g:tex_flavor = 'latex'
 let g:vimtex_quickfix_ignored_warnings = [
     \ 'Underfull',
     \ 'csquotes',
@@ -110,6 +112,10 @@ let g:vimtex_quickfix_ignored_warnings = [
     \ 'specifier changed to',
     \ '\float@addtolists',
   \ ]
+
+" This is just useful for using latex with git
+command! SplitLines %s/\. /\.\r/g
+nnoremap <leader>sp :SplitLines<cr> :nohl<cr>
 
 let fortran_free_source=1
 let g:ale_fortran_gcc_executable = 'gfortran-mp-5'
