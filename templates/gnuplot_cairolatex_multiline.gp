@@ -18,10 +18,10 @@ set key top right spacing 2 width 2
 set title PLOTTITLE
 set xlabel XLABEL
 set ylabel YLABEL
-set tmargin at screen 0.15
-set bmargin at screen 0.85
-set lmargin at screen 0.15
-set rmargin at screen 0.85
+set tmargin at screen 0.12
+set bmargin at screen 0.88
+set lmargin at screen 0.12
+set rmargin at screen 0.88
 
 # example of non-tic label
 # set label '$ T_{KT} $' at first 0.18,1.6 YUPPER + YUPPER / 50
@@ -33,10 +33,10 @@ set rmargin at screen 0.85
 
 # for a file with multiple data sets: index 0 is the first dataset
 # requires TWO blank lines between datasets
-plot FILE using 1:2 index 0 w lp ls @BLUE lw 3 title LINEONE, \
-      '' using 1:2 index 1 w lp ls @LGREEN lw 3 title LINETWO, \
-      '' using 1:2 index 2 w lp ls @YELLOW lw 3 title LINETHREE, \
-      '' using 1:2 index 3 w lp ls @RED lw 2 title LINEFOUR
+plot FILE using 1:2 index 0 w lp ls @RED title LINEONE, \
+      '' using 1:2 index 1 w lp ls @LGREEN title LINETWO, \
+      '' using 1:2 index 2 w lp ls @BLUE lw 3 title LINETHREE, \
+      '' using 1:2 index 3 w lp ls @YELLOW lw 2 title LINEFOUR
 
 
 # other notes: macros @LX_SQ etc are defined in ~/.gnuplot

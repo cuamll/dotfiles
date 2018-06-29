@@ -36,7 +36,8 @@ set mouse=a
 set incsearch hlsearch
 
 "Absolute number for current line, relative for others
-set relativenumber number
+" set relativenumber number
+set number
 
 " avoid swap files etc. piling up everywhere
 set dir=~/.vim_backups//
@@ -105,13 +106,7 @@ let g:lightline = {
 let g:lightline.colorscheme = 'seoul256'
 
 let g:tex_flavor = 'latex'
-let g:vimtex_quickfix_ignored_warnings = [
-    \ 'Underfull',
-    \ 'csquotes',
-    \ 'Overfull',
-    \ 'specifier changed to',
-    \ '\float@addtolists',
-  \ ]
+let g:vimtex_quickfix_enabled = 0
 
 " This is just useful for using latex with git
 command! SplitLines %s/\. /\.\r/g
@@ -134,6 +129,7 @@ inoremap jj <Esc>
 nnoremap j gj
 nnoremap k gk
 nnoremap <leader><Space> :nohl<cr>
+nnoremap <leader>ms :mksession '~/.vim/Session.vim'<cr>
 
 "easy switching of tabs
 noremap <leader>tn :tabn<cr>

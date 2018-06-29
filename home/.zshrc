@@ -15,7 +15,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/opt/texbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="/Users/cgray/anaconda3/bin:/opt/texbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export PATH="/usr/local/include:$PATH"
 
 export EDITOR='vim'
@@ -29,8 +29,9 @@ fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     export DEFAULT_USER=cgray
-    export PATH=/opt/local/bin:/opt/local/sbin:/opt/local:/usr/texbin:/Library/TeX/texbin:$PATH
-    export PYTHONPATH="/opt/local/Library/Frameworks/Python.framework:$PYTHONPATH"
+    export PATH=/Users/cgray/anaconda3/bin:/opt/local/bin:/opt/local/sbin:/opt/local:/usr/texbin:/Library/TeX/texbin:$PATH
+    # export PYTHONPATH="/opt/local/Library/Frameworks/Python.framework:$PYTHONPATH"
+    export PYTHONPATH="/Users/cgray/anaconda3/bin:$PYTHONPATH"
 fi
 
 # gnuplot -- plot to latex and compile to pdf

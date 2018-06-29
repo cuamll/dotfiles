@@ -26,7 +26,7 @@ set rmargin at screen 0.85
 # example of non-tic label
 # set label 'KT transition' at first 1.35, YUPPER + YUPPER / 50
 
-plot FILE w lp ls @RED title LINETITLE
+plot FILE using 1:4 w lp ls @RED title LINETITLE
 
 # for a file with multiple data sets: index 0 is the first dataset
 # requires TWO blank lines between datasets

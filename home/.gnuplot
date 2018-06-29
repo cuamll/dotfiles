@@ -5,12 +5,17 @@ set macros
 set loadpath '~/.config/gnuplot'
 
 # add default line colors
-set style line 1 lc rgb '#C4145E' lt 1 lw 3 pt 2 ps 0.75  # red
-set style line 2 lc rgb '#A1D490' lt 1 lw 3 pt 4 ps 0.75  # light green
-set style line 3 lc rgb '#44A4C2' lt 1 lw 3 pt 6 ps 0.75  # blue
-set style line 4 lc rgb '#F2D33C' lt 1 lw 3 pt 8 ps 0.75  # yellow
-set style line 5 lc rgb '#832591' lt 1 lw 3 pt 9 ps 0.75  # purple
-set style line 6 lc rgb '#E88427' lt 1 lw 3 pt 3 ps 0.75  # orange
+# set style line 1 lc rgb '#C4145E' lt 1 lw 3 pt 2 ps 0.75  # red
+# set style line 2 lc rgb '#A1D490' lt 1 lw 3 pt 4 ps 0.75  # light green
+# set style line 3 lc rgb '#44A4C2' lt 1 lw 3 pt 6 ps 0.75  # blue
+LINEWIDTH = 5
+PSIZE = 1.0
+set style line 4 lc rgb '#F2D33C' lt 1 lw LINEWIDTH pt 8 ps PSIZE # yellow
+set style line 5 lc rgb '#832591' lt 1 lw LINEWIDTH pt 9 ps PSIZE # purple
+set style line 6 lc rgb '#E88427' lt 1 lw LINEWIDTH pt 3 ps PSIZE # orange
+set style line 1 lc rgb '#99001A' lt 1 lw LINEWIDTH pt 2 ps PSIZE # rd
+set style line 2 lc rgb '#145E00' lt 1 lw LINEWIDTH pt 4 ps PSIZE # grn
+set style line 3 lc rgb '#278BE8' lt 1 lw LINEWIDTH pt 6 ps PSIZE # blu
 
 # add macros to select the desired line style
 RED = "1"
@@ -23,7 +28,8 @@ ORANGE = "6"
 # add macros to select a desired terminal
 AQ = "set terminal aqua dashed font 'Helvetica,20'"
 LX = "set terminal cairolatex standalone size 20cm,14cm"
-LX_SQ = "set terminal cairolatex standalone size 20cm,20cm"
+# LX_SQ = "set terminal cairolatex standalone size 20cm,20cm"
+LX_SQ = 'set terminal cairolatex standalone size 20cm,20cm header "\\usepackage[T1]{fontenc}\n\\renewcommand*\\familydefault{\\sfdefault}"'
 PNG = "set terminal pngcairo size 350,262 enhanced font 'Verdana,10'"
 SVG = "set terminal svg size 350,262 fname \
    'Verdana, Helvetica, Arial, sans-serif' fsize = 10"
