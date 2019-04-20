@@ -10,20 +10,26 @@ set loadpath '~/.config/gnuplot'
 # set style line 3 lc rgb '#44A4C2' lt 1 lw 3 pt 6 ps 0.75  # blue
 LINEWIDTH = 5
 PSIZE = 1.0
-set style line 4 lc rgb '#F2D33C' lt 1 lw LINEWIDTH pt 8 ps PSIZE # yellow
-set style line 5 lc rgb '#832591' lt 1 lw LINEWIDTH pt 9 ps PSIZE # purple
-set style line 6 lc rgb '#E88427' lt 1 lw LINEWIDTH pt 3 ps PSIZE # orange
-set style line 1 lc rgb '#99001A' lt 1 lw LINEWIDTH pt 2 ps PSIZE # rd
-set style line 2 lc rgb '#145E00' lt 1 lw LINEWIDTH pt 4 ps PSIZE # grn
-set style line 3 lc rgb '#278BE8' lt 1 lw LINEWIDTH pt 6 ps PSIZE # blu
+set style line 1 lc rgb '#99001A' lt 1 lw LINEWIDTH pt 4 ps PSIZE # rd
+set style line 2 lc rgb '#145E00' lt 1 lw LINEWIDTH pt 6 ps PSIZE # grn
+set style line 3 lc rgb '#278BE8' lt 1 lw LINEWIDTH pt 8 ps PSIZE # blu
+set style line 4 lc rgb '#F2D33C' lt 1 lw LINEWIDTH pt 5 ps PSIZE # yellow
+set style line 5 lc rgb '#832591' lt 1 lw LINEWIDTH pt 7 ps PSIZE # purple
+set style line 6 lc rgb '#E88427' lt 1 lw LINEWIDTH pt 9 ps PSIZE # orange
+set style line 7 lc rgb '#F28FEA' lt 1 lw LINEWIDTH pt 10 ps PSIZE # pink
+set style line 8 lc rgb '#8FF297' lt 1 lw LINEWIDTH pt 11 ps PSIZE # dark green
+set style line 9 lc rgb '#2D2F96' lt 1 lw LINEWIDTH pt 12 ps PSIZE # dark blu
 
 # add macros to select the desired line style
 RED = "1"
-LGREEN = "2"
+DGREEN = "2"
 BLUE = "3"
 YELLOW = "4"
 PURPLE = "5"
 ORANGE = "6"
+PINK = "7"
+LGREEN = "8"
+DBLUE = "9"
 
 # add macros to select a desired terminal
 AQ = "set terminal aqua dashed font 'Helvetica,20'"

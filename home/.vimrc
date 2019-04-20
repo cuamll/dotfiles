@@ -16,6 +16,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'lervag/vimtex'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'godlygeek/tabular'
 
 " Colour schemes
 Plug 'whatyouhide/vim-gotham'
@@ -62,6 +63,7 @@ augroup Maketabs
   " clear events -- not sure if this is necessary in this case?
   autocmd! Maketabs
   autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
+  autocmd BufEnter *.c set noexpandtab shiftwidth=8 softtabstop=0
   autocmd BufLeave ?akefile* set expandtab|let &shiftwidth=shift_width|let &softtabstop=soft_tab_stop
 augroup END
 
@@ -80,11 +82,11 @@ endif
 
 "Default font
 if has("win32")
-    set guifont=Courier\ New:h10:cANSI
+    set guifont=Courier\ New:h14:cANSI
     set bs=2
     syntax on
 elseif has("gui_macvim")
-    set guifont=Source\ Code\ Pro\ for\ Powerline
+    set guifont=Source\ Code\ Pro\ for\ Powerline:h14
 else
 set guifont=Source\ Code\ Pro\ for\ Powerline
 " set highlight Normal ctermbg=None " Makes terminal vim transparent in Linux
@@ -113,6 +115,10 @@ command! SplitLines %s/\. /\.\r/g
 nnoremap <leader>sp :SplitLines<cr> :nohl<cr>
 
 let fortran_free_source=1
+" If file type is just .f then assume F77, fixed source
+augroup filetypedetect
+    au BufRead,BufNewFile *.f let fortran_free_source=0
+augroup END
 let g:ale_fortran_gcc_executable = 'gfortran-mp-5'
 let g:ale_fortran_gcc_options = '-Jmod -std=f2003 -fopenmp'
 let g:ale_fortran_gcc_use_free_form = 1
