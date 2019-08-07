@@ -1,6 +1,5 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/cgray/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -9,9 +8,6 @@ source $ZSH/oh-my-zsh.sh
 ZSH_THEME="minimal"
 
 export EDITOR='vim'
-
-# Personal aliases
-source $HOME/.aliases
 
 export DEFAULT_USER=cgray
 export PATH=/Users/cgray/anaconda3/bin:/opt/local/bin:/opt/local/sbin:/opt/local:/usr/texbin:/Library/TeX/texbin:$PATH
@@ -41,3 +37,8 @@ plt_gen() {
 }
 
 plugins=(git)
+source $ZSH/oh-my-zsh.sh
+
+# Personal aliases, otherwise they get overwritten in oh-my-zsh.sh
+source $HOME/.aliases
+
