@@ -1,38 +1,21 @@
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
-
-# Look in ~/.oh-my-zsh/themes/
-ZSH_THEME="minimal"
-
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-HIST_STAMPS="dd.mm.yyyy"
-
-# plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git python common-aliases)
-
+export ZSH="/Users/cgray/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-export PATH="/Users/cgray/anaconda3/bin:/opt/texbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-export PATH="/usr/local/include:$PATH"
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="minimal"
 
 export EDITOR='vim'
 
 # Personal aliases
 source $HOME/.aliases
 
-source "$HOME/.homesick/repos/homeshick/homeshick.sh"
-homeshick --quiet refresh
-fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
-
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    export DEFAULT_USER=cgray
-    export PATH=/Users/cgray/anaconda3/bin:/opt/local/bin:/opt/local/sbin:/opt/local:/usr/texbin:/Library/TeX/texbin:$PATH
-    # export PYTHONPATH="/opt/local/Library/Frameworks/Python.framework:$PYTHONPATH"
-    export PYTHONPATH="/Users/cgray/anaconda3/bin:$PYTHONPATH"
-fi
+export DEFAULT_USER=cgray
+export PATH=/Users/cgray/anaconda3/bin:/opt/local/bin:/opt/local/sbin:/opt/local:/usr/texbin:/Library/TeX/texbin:$PATH
+export PYTHONPATH="/Users/cgray/anaconda3/bin:$PYTHONPATH"
 
 # gnuplot -- plot to latex and compile to pdf
 # add "keep" as final argument to keep aux files
@@ -56,3 +39,5 @@ plt_gen() {
     rm -f "$2".log "$2".aux "$2".dvi "$2".ps "$2"-inc.eps
   fi
 }
+
+plugins=(git)
