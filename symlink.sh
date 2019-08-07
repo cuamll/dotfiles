@@ -1,5 +1,5 @@
 #!/bin/bash
-# pull the list of files in home and symlink them to ~
+# pull the list of dotfiles in home and symlink them to ~
 # not very sophisticated
 # must be run from within dotfiles directory!
 

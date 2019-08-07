@@ -57,13 +57,11 @@ let soft_tab_stop = 2
 let &shiftwidth = shift_width
 let &softtabstop = soft_tab_stop
 " Sort out makefile tab requirements
-augroup Maketabs
+augroup Tabs
   " clear events -- not sure if this is necessary in this case?
-  autocmd! Maketabs
-  autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
-  autocmd BufEnter *.c,*.h set noexpandtab shiftwidth=4 softtabstop=0
-  autocmd BufLeave *.c,*.h set expandtab|let &shiftwidth=shift_width|let &softtabstop=soft_tab_stop
-  autocmd BufLeave ?akefile* set expandtab|let &shiftwidth=shift_width|let &softtabstop=soft_tab_stop
+  autocmd! Tabs
+  autocmd BufEnter ?akefile*,*.c,*.h set noexpandtab shiftwidth=8 softtabstop=0
+  autocmd BufLeave ?akefile*,*.c,*.h, set expandtab|let &shiftwidth=shift_width|let &softtabstop=soft_tab_stop
 augroup END
 
 " enable spell checking for tex files
@@ -115,9 +113,6 @@ let g:ale_fortran_gcc_use_free_form = 1
 
 let mapleader = ","
 nnoremap ; :
-noremap <leader>qq :q!<cr>
-noremap <leader>w :w!<cr>
-noremap <leader>qw :wq<cr>
 inoremap jj <Esc>
 "Stops vim from 'jumping over' wrapped lines
 nnoremap j gj
