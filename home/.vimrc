@@ -11,8 +11,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
 
 Plug 'w0rp/ale'
-Plug 'vimwiki/vimwiki'
-" Plug 'lervag/vimtex' , { 'on': 'TexToggle', 'for': ['tex', 'bib'] }
 Plug 'lervag/vimtex'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
@@ -36,8 +34,8 @@ set splitright
 set mouse=a
 set incsearch hlsearch
 
-"Absolute number for current line, relative for others
-" set relativenumber number
+" set relativenumber number does absolute for current line only. BUT
+" becomes very slow in large files with long lines e.g. tex files!
 set number
 
 " avoid swap files etc. piling up everywhere
@@ -71,7 +69,6 @@ augroup END
 " enable spell checking for tex files
 autocmd FileType tex,wiki,txt,md setlocal spell spelllang=en_gb
 
-"remove GUI cruft
 if has('gui_running')
     :set guioptions =c
 endif
@@ -81,17 +78,7 @@ if has ('mouse_sgr')
     set ttymouse=sgr
 endif
 
-"Default font
-if has("win32")
-    set guifont=Courier\ New:h14:cANSI
-    set bs=2
-    syntax on
-elseif has("gui_macvim")
-    set guifont=Source\ Code\ Pro\ for\ Powerline:h14
-else
-set guifont=Source\ Code\ Pro\ for\ Powerline
-" set highlight Normal ctermbg=None " Makes terminal vim transparent in Linux
-endif
+set guifont=Source\ Code\ Pro:h16
 "
 " --- set plugin variables ---
 
