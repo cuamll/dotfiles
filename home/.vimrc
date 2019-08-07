@@ -63,7 +63,8 @@ augroup Maketabs
   " clear events -- not sure if this is necessary in this case?
   autocmd! Maketabs
   autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
-  autocmd BufEnter *.c set noexpandtab shiftwidth=8 softtabstop=0
+  autocmd BufEnter *.c,*.h set noexpandtab shiftwidth=4 softtabstop=0
+  autocmd BufLeave *.c,*.h set expandtab|let &shiftwidth=shift_width|let &softtabstop=soft_tab_stop
   autocmd BufLeave ?akefile* set expandtab|let &shiftwidth=shift_width|let &softtabstop=soft_tab_stop
 augroup END
 
