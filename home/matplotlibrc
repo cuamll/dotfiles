@@ -1,0 +1,51 @@
+#### MATPLOTLIBRC FORMAT
+
+# check ~/anaconda3/lib/python3.7/
+# site-packages/matplotlib/mpl-data/matplotlibrc
+# for the defaults and explanations
+
+lines.linewidth   : 2     ## line width in points
+lines.linestyle   : -
+lines.markersize  : 6
+
+font.family         : sans-serif
+font.size           : 10.0
+font.sans-serif     : Computer Modern Sans Serif
+
+text.usetex         : True
+#text.latex.preamble :
+## text.latex.preamble is a single line of LaTeX code that
+## will be passed on to the LaTeX system.
+
+# colours to add to cycler to match gnuplot
+# can't name them lol rc doesn't like variables
+# rd   = '99001A'
+# dgrn = '8FF297'
+# blu  = '278BE8'
+# yl   = 'F2D33C'
+# purp = '832591'
+# orng = 'E88427'
+# pink = 'F28FEA'
+# lgrn = '145E00'
+# dblu = '2D2F96'
+
+axes.prop_cycle    : cycler('color', ['99001A', '8FF297', '278BE8', 'F2D33C', '832591', 'E88427', 'F28FEA', '145E00', '2D2F96'])
+                      ## color cycle for plot lines  as list of string
+                      ## colorspecs: single letter, long name, or web-style hex
+					  ## Note the use of string escapes here ('1f77b4', instead of 1f77b4)
+                      ## as opposed to the rest of this file.
+
+#### GRIDS
+grid.color       :   666666
+grid.linestyle   :   --
+grid.linewidth   :   0.7
+grid.alpha       :   0.5
+
+
+#### FIGURE
+#figure.titlesize : large      ## size of the figure title (Figure.suptitle())
+#figure.titleweight : normal   ## weight of the figure title
+#figure.figsize   : 6.4, 4.8   ## figure size in inches
+figure.dpi           : 200
+savefig.dpi          : figure   ## figure dots per inch or 'figure'
+savefig.format       : pdf      ## png, ps, pdf, svg
