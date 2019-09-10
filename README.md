@@ -1,7 +1,7 @@
 dotfiles
 ========
 
-dryas dotfiles. Clone, cd into clone directory and do `./symlink.sh` to symlink them all into `$HOME`.
+new master dotfiles. Clone, cd into clone directory and do `./symlink.sh` to symlink them all into `$HOME`.
 
 `.zshrc` assumes [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) is installed.  
 `.vimrc` assumes [vim-plug](https://github.com/junegunn/vim-plug) is installed; just run `:PlugInstall` once that's done.  
