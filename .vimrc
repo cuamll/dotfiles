@@ -15,6 +15,8 @@ Plug 'vimwiki/vimwiki'
 Plug 'lervag/vimtex' , { 'on': 'TexToggle', 'for': ['tex', 'bib'] }
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 
 " Colour schemes
 Plug 'whatyouhide/vim-gotham'
@@ -33,8 +35,9 @@ set splitright
 set mouse=a
 set incsearch hlsearch
 
-"Absolute number for current line, relative for others
-set relativenumber number
+"Unsetting relativenumber for now, makes latex files lag a lot.
+"Could turn back on later.
+set number
 
 " avoid swap files etc. piling up everywhere
 set dir=~/.vim_backups//
@@ -83,7 +86,7 @@ if has("win32")
 elseif has("gui_macvim")
     set guifont=Source\ Code\ Pro\ for\ Powerline
 else
-set guifont=Source\ Code\ Pro\ for\ Powerline
+set guifont=Roboto\ Mono\ Light
 " set highlight Normal ctermbg=None " Makes terminal vim transparent in Linux
 endif
 "
@@ -101,6 +104,19 @@ let g:lightline = {
         \ }
 
 let g:lightline.colorscheme = 'seoul256'
+
+" let g:vimtex_compiler_latexmk = {
+"     \ 'background' : 1,
+"     \ 'build_dir' : '',
+"     \ 'callback' : 1,
+"     \ 'continuous' : 1,
+"     \ 'executable' : '/home/callum/texlive/2017/bin/x86_64-linux/latexmk',
+"     \ 'options' : [
+"     \   '-verbose',
+"     \   '-file-line-error',
+"     \   '-pdflatex="xelatex -interaction=nonstopmode -synctex=1 %O %S"',
+"     \ ],
+"     \}
 
 let g:vimtex_quickfix_ignored_warnings = [
     \ 'Underfull',
