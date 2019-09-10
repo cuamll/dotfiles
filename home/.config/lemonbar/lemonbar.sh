@@ -66,7 +66,8 @@ while true; do
   output="${output}%{F#888888}     %{F#051525}%{T2}${clock_icon}%{T1}${date}"
 
   echo -e " ${output} "; sleep $DELAY;
-done | lemonbar -f "Roboto Mono-8" -f "FontAwesome-8" -d -g 1800x24+60+24 -B \#bbdde5eb -F \#cccccc | /bin/bash
+done | lemonbar -f "Overpass Mono-10" -f "FontAwesome-8" -d -g 1800x40+60+24 -B \#bbdde5eb -F \#cccccc | /bin/bash
+# done | lemonbar -f "Overpass Mono-10" -f "FontAwesome-8" -d -g 1800x24+60+24 -B \#bbdde5eb -F \#cccccc | /bin/bash
 
 ##!/bin/zsh
 #

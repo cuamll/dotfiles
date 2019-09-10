@@ -1,92 +1,81 @@
-set nocompatible
-filetype off
+"--- plugins ---
 
-"------- VUNDLE -------
+call plug#begin()
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" obligatory tpope section
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-vinegar'
+" works with lightline
+Plug 'tpope/vim-fugitive'
 
-Plugin 'gmarik/Vundle.vim'
+Plug 'w0rp/ale'
+Plug 'vimwiki/vimwiki'
+Plug 'lervag/vimtex'
+Plug 'itchyny/lightline.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/goyo.vim'
 
-" tpope is a G
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-vinegar'
-Plugin 'tpope/vim-abolish'
+" Colour schemes
+Plug 'whatyouhide/vim-gotham'
+Plug 'romainl/apprentice'
+Plug 'junegunn/seoul256.vim'
+Plug 'fenetikm/falcon'
+Plug 'arcticicestudio/nord-vim'
 
-" Code completion, syntax checking, etc.
-Plugin 'scrooloose/syntastic'
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'lervag/vimtex'
+call plug#end()
 
-" other misc stuff that I've found I actually use
-Plugin 'bling/vim-airline'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'vim-scripts/a.vim'
-Plugin 'rking/ag.vim'
-Plugin 'vimwiki/vimwiki'
-Plugin 'mattn/calendar-vim'
-
-" A couple of colour schemes for convenience mostly
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'whatyouhide/vim-gotham'
-Plugin 'tomasr/molokai'
-
-call vundle#end()
-
-filetype plugin indent on
-
-" -- END OF VUNDLE SETTINGS --
+" --- end vim-plug ---
 
 " --- useful settings ---
 
-set copyindent
-set autoindent
-"Ignore case if pattern is all lowercase, otherwise case-sensitive
-set smartcase
-"insert tabs at line start according to shiftwidth
-set smarttab
-"Expand tabs as spaces
-set expandtab
-"Tab completion stuff, apparently
-set wildmenu
-set wildmode=list:longest,full
-"Enable mouse support
+syntax enable
+set copyindent autoindent
+set smartcase smarttab expandtab
+set splitright
 set mouse=a
-
-let shift_width = 2
-let tab_stop = 2
-let soft_tab_stop = 2
-
-let &shiftwidth = shift_width
-let &softtabstop = soft_tab_stop
 set incsearch hlsearch
 
 "Absolute number for current line, relative for others
-set relativenumber
+set relativenumber number
 set number
 
+" avoid swap files etc. piling up everywhere
 set dir=~/.vim_backups//
 set backupdir=~/.vim_backups//
 
+" possible thing to mess around with later
+" set fillchars=vert:|
+
 "colour scheme
 set background=dark
-colorscheme solarized
+let g:seoul256_background = 235
+colo seoul256
 
-" Highlight 80th column
+" Highlight a column
 set colorcolumn=80
 
-" Set tab settings for makefiles only
-autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
-autocmd BufLeave ?akefile* set expandtab|let &shiftwidth=shift_width|let &softtabstop=soft_tab_stop
+" Tab settings
+let shift_width = 2
+let tab_stop = 2
+let soft_tab_stop = 2
+let &shiftwidth = shift_width
+let &softtabstop = soft_tab_stop
+" Sort out makefile tab requirements
+augroup Maketabs
+  " clear events -- not sure if this is necessary in this case?
+  autocmd! Maketabs
+  autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
+  autocmd BufLeave ?akefile* set expandtab|let &shiftwidth=shift_width|let &softtabstop=soft_tab_stop
+augroup END
 
-"GUI Vim settings - gets rid of cruft around the edges
+" enable spell checking for tex files
+autocmd FileType tex,wiki,txt,md setlocal spell spelllang=en_gb
+
+"remove GUI cruft
 if has('gui_running')
-    let g:solarized_termtrans=1
-    :set guioptions -=r
-    :set guioptions -=L
-    :set guioptions -=b
+    :set guioptions =c
 endif
 
 "Makes mouse reporting work properly on wide screens
@@ -94,108 +83,60 @@ if has ('mouse_sgr')
     set ttymouse=sgr
 endif
 
-"Default font
-if has("win32")
-    set guifont=Courier\ New:h10:cANSI
-    set bs=2
-    syntax on
-elseif has("gui_macvim")
-    set guifont=Source\ Code\ Pro\ for\ Powerline
-else
-set guifont=Source\ Code\ Pro
-" set highlight Normal ctermbg=None " Makes terminal vim transparent in Linux
-endif
+set guifont=Source\ Code\ Pro\ Light\ 12
 
-let fortran_free_source = 1
-
+"
 " --- set plugin variables ---
 
-" - YCM -
+" git branch information in lightline: taken from :h lightline example
+let g:lightline = {
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ],
+        \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+        \ },
+        \ 'component_function': {
+        \   'gitbranch': 'fugitive#head'
+        \ },
+        \ }
 
-" Give global extra_conf.py for YouCompleteMe as a fallback
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_autoclose_preview_window_after_completion = 1
+let g:lightline.colorscheme = 'seoul256'
+let g:goyo_width = 90
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<tab>'
+let g:tex_flavor = 'latex'
+let g:vimtex_quickfix_enabled = 0
 
-let g:ycm_error_symbol = '!!'
-let g:ycm_warning_symbol = '??'
+" This is just useful for using latex with git
+command! SplitLines %s/\. /\.\r/g
+nnoremap <leader>sp :SplitLines<cr> :nohl<cr>
 
-" Remap YCM GoTo command to something less ridiculous
-nmap <leader>jd :YcmCompleter GoTo<CR>
-nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+let fortran_free_source=1
+let g:ale_fortran_gcc_executable = 'gfortran-5'
+let g:ale_fortran_gcc_options = '-Jmod -std=f2003 -fopenmp'
+let g:ale_fortran_gcc_use_free_form = 1
 
-" Syntastic options
-" let g:syntastic_python_checkers = ['pylint', 'python']
-" let g:syntastic_cpp_checkers = ['cppcheck', 'gcc', 'make']
-" let g:syntastic_cpp_gcc_quiet_messages = { "level": "warnings",
-"                                          \ "file": ['\m^/opt/local','\m^/usr/include'] }
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" nnoremap <F5> :SyntasticCheck<cr>
-" let g:syntastic_debug = 0
+let g:vimwiki_list = [{'path': '~/private/wiki/'}]
 
-" CtrlP default settings
-nnoremap <leader>p :CtrlPMixed<CR>
-let g:ctrlp_map = ''
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_open_new_file = 'v'
+" --- remappings ---
 
-let g:vimwiki_list = [{'path': '~/private/wiki'}]
-
-let g:vimtex_quickfix_ignored_warnings = [
-    \ 'Underfull',
-    \ 'Overfull',
-    \ 'specifier changed to',
-    \ 'preliminary',
-    \ 'xparse/redefine-command',
-  \ ]
-
-" --- remappings, basically ---
-
-"Allows you to use commas to start commands
 let mapleader = ","
-
-"No more colons
 nnoremap ; :
- 
-"Fast quitting?
 noremap <leader>qq :q!<cr>
-"Fast saving
 noremap <leader>w :w!<cr>
-"Save and quit
 noremap <leader>qw :wq<cr>
-"Easy edit of .vimrc
-noremap <leader>vrc :vsp! $MYVIMRC<cr>
+inoremap jj <Esc>
+"Stops vim from 'jumping over' wrapped lines
+nnoremap j gj
+nnoremap k gk
+nnoremap <leader><Space> :nohl<cr>
+nnoremap <leader>ms :mksession '~/.vim/Session.vim'<cr>
 
 "easy switching of tabs
 noremap <leader>tn :tabn<cr>
 noremap <leader>tp :tabp<cr>
-
+"Easy edit of .vimrc
+noremap <leader>vrc :vsp! $MYVIMRC<cr>
 "Press Ctrl-I to split lines:
-nnoremap <C-I> i<cr><Esc>
-
-"clear highlighting
-nnoremap <leader>c :nohl<cr>
-
+nnoremap <C-I> i<cr><Esc>gk$
 "file browser ease
 nnoremap <leader>exp :Explore<cr>
-nnoremap <leader>exw :vsp /home/callum/Dropbox<cr>
 nnoremap <leader>sx :Sex!<cr>
-
-"Easy buffer movement:
-map <C-W><C-J> <C-W>j<C-W>_
-map <C-W><C-K> <C-W>k<C-W>_
-map <C-W><C-L> <C-W>l<C-W>|
-map <C-W><C-H> <C-W>h<C-W>|
-
-"Remap jj to escape in insert mode
-inoremap jj <Esc>
-
-"Stops vim from 'jumping over' wrapped lines
-nnoremap j gj
-nnoremap k gk

@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+ZSH_THEME="minimal"
 
 # If you suddenyl start getting problems, uncomment the next thirty lines or so
 # vi mode
@@ -130,9 +130,16 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     export PYTHONPATH="/opt/local/Library/Frameworks/Python.framework:$PYTHONPATH"
 fi
 
+export PATH="${PATH}:${HOME}/.local/bin:/usr/local/go/bin"
 
 # define a mupdf function here because I dunno
 # if I can put it in aliases.zsh or not
 mupdf() {
     mupdf-x11 "$*" &
 }
+
+PATH="/home/callum/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/callum/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/callum/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/callum/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/callum/perl5"; export PERL_MM_OPT;
