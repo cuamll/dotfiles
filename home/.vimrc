@@ -6,9 +6,8 @@ call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-commentary'
 
 Plug 'w0rp/ale'
 Plug 'lervag/vimtex'
@@ -60,7 +59,7 @@ let &softtabstop = soft_tab_stop
 augroup Tabs
   " clear events -- not sure if this is necessary in this case?
   autocmd! Tabs
-  autocmd BufEnter ?akefile*,*.c,*.h set noexpandtab shiftwidth=8 softtabstop=0
+  autocmd BufEnter ?akefile*,*.c,*.h set noexpandtab shiftwidth=4 softtabstop=0
   autocmd BufLeave ?akefile*,*.c,*.h, set expandtab|let &shiftwidth=shift_width|let &softtabstop=soft_tab_stop
 augroup END
 
