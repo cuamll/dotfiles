@@ -66,6 +66,9 @@ augroup END
 " enable spell checking for tex files
 autocmd FileType tex,wiki,txt,md setlocal spell spelllang=en_gb
 
+" tex: switch from subfig (revtex) to subcaption syntax
+" :%s/  \\subfloat\[\(.*\)\]{.*\n.*\[\(.*\)\]{\(.*\)}\n\s\+}/  \\begin{subfigure}{0.48\\textwidth}\r    \\centering\r    \\includegraphics[\2]{\3}\r    \\caption{\1}\r  \\end{subfigure}/
+
 if has('gui_running')
     :set guioptions =c
 endif

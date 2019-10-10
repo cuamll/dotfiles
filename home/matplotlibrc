@@ -29,7 +29,7 @@ text.latex.preamble : \usepackage{amsmath}\usepackage{sfmath}
 # lgrn = '145E00'
 # dblu = '2D2F96'
 
-axes.prop_cycle    : cycler('color', ['99001A', '8FF297', '278BE8', 'F2D33C', '832591', 'E88427', 'F28FEA', '145E00', '2D2F96'])
+axes.prop_cycle    : cycler('color', ['99001A', '145E00', '278BE8', 'F2D33C', '832591', 'E88427', 'F28FEA', '8FF297', '2D2F96'])
                       ## color cycle for plot lines  as list of string
                       ## colorspecs: single letter, long name, or web-style hex
 					  ## Note the use of string escapes here ('1f77b4', instead of 1f77b4)
