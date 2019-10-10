@@ -67,7 +67,9 @@ augroup END
 autocmd FileType tex,wiki,txt,md setlocal spell spelllang=en_gb
 
 " tex: switch from subfig (revtex) to subcaption syntax
-" :%s/  \\subfloat\[\(.*\)\]{.*\n.*\[\(.*\)\]{\(.*\)}\n\s\+}/  \\begin{subfigure}{0.48\\textwidth}\r    \\centering\r    \\includegraphics[\2]{\3}\r    \\caption{\1}\r  \\end{subfigure}/
+" might not always get it right (if the subfloat was positioned by changing
+" textheight for example) but not too bad
+" :%s/  \\subfloat\[\(.*\)\]{.*\n.*\[\(.*\), \(.*\)\]{\(.*\)}\n\s\+}/  \\begin{subfigure}{\2}\r    \\centering\r    \\includegraphics[width=\\textwidth, \2]{\3}\r    \\caption{\1}\r  \\end{subfigure}/
 
 if has('gui_running')
     :set guioptions =c
