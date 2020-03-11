@@ -6,11 +6,11 @@
 
 lines.linewidth   : 2     ## line width in points
 lines.linestyle   : -
-lines.markersize  : 6
+lines.markersize  : 12
 
 text.usetex         : True
 font.family         : sans-serif
-font.size           : 16.0
+font.size           : 26.0
 font.sans-serif     : Computer Modern
 
 text.latex.preamble : \usepackage{amsmath}\usepackage{sfmath}
