@@ -76,7 +76,7 @@ if has ('mouse_sgr')
     set ttymouse=sgr
 endif
 
-set guifont=Source\ Code\ Pro:h16
+set guifont=Source\ Code\ Pro\ 13
 "
 " --- set plugin variables ---
 
