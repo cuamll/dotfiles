@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
-export ZSH="/home/callum/.oh-my-zsh"
+HOMEDIR="/home/callum"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -10,8 +11,8 @@ ZSH_THEME="minimal"
 export EDITOR='vim'
 
 export DEFAULT_USER=cgray
-export PATH=/Users/cgray/anaconda3/bin:/opt/local/bin:/opt/local/sbin:/opt/local:/usr/texbin:/Library/TeX/texbin:$PATH
-export PYTHONPATH="/Users/cgray/anaconda3/bin:$PYTHONPATH"
+export PATH=$HOME/anaconda3/bin:/opt/local/bin:/opt/local/sbin:/opt/local:/usr/texbin:/Library/TeX/texbin:$PATH
+export PYTHONPATH="$HOME/anaconda3/bin:$PYTHONPATH"
 
 # gnuplot -- plot to latex and compile to pdf
 # add "keep" as final argument to keep aux files

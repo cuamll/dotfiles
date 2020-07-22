@@ -60,8 +60,8 @@ let &softtabstop = soft_tab_stop
 augroup Tabs
   " clear events -- not sure if this is necessary in this case?
   autocmd! Tabs
-  autocmd BufEnter ?akefile*,*.c,*.h set noexpandtab shiftwidth=8 softtabstop=0
-  autocmd BufLeave ?akefile*,*.c,*.h, set expandtab|let &shiftwidth=shift_width|let &softtabstop=soft_tab_stop
+  autocmd BufEnter ?akefile* set noexpandtab shiftwidth=8 softtabstop=0
+  autocmd BufLeave ?akefile* set expandtab|let &shiftwidth=shift_width|let &softtabstop=soft_tab_stop
 augroup END
 
 " enable spell checking for tex files
