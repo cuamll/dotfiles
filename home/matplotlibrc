@@ -8,11 +8,14 @@ lines.linewidth   : 2     ## line width in points
 lines.linestyle   : -
 lines.markersize  : 6
 
-font.family         : sans-serif
-font.size           : 10.0
-font.sans-serif     : Computer Modern
-
 text.usetex         : True
+font.size           : 16.0
+# uncommenting these two lines throws a warning
+# from findfont every time a plot is made; it doesn't
+# seem to matter, though, the latex sans font is used anyway???
+# font.family         : sans-serif
+# font.sans-serif     : Computer Modern
+
 text.latex.preamble : \usepackage{amsmath}\usepackage{sfmath}
 ## text.latex.preamble is a single line of LaTeX code that
 ## will be passed on to the LaTeX system.
