@@ -105,6 +105,17 @@ let fortran_free_source=1
 augroup filetypedetect
     au BufRead,BufNewFile *.f let fortran_free_source=0
 augroup END
+let g:ale_linters = {
+\   'fortran': ['gcc'],
+\   'C': [
+\         'gcc',
+\         'uncrustify'
+\        ],
+\   'python': [
+\              'pylint',
+\              'reorder-python-imports'
+\             ],
+\}
 let g:ale_fortran_gcc_executable = 'gfortran-mp-5'
 let g:ale_fortran_gcc_options = '-Jmod -std=f2003 -fopenmp'
 let g:ale_fortran_gcc_use_free_form = 1

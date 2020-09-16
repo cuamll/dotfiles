@@ -42,4 +42,4 @@ source $ZSH/oh-my-zsh.sh
 
 # Personal aliases, otherwise they get overwritten in oh-my-zsh.sh
 source $HOME/.aliases
-
+test -f /home/callum/amber/amber20//amber.sh && source /home/callum/amber/amber20//amber.sh

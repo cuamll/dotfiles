@@ -1,8 +1,5 @@
-! URxvt*font: -*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
-! URxvt*font: -misc-monaco-medium-r-normal--14-101-100-100-c-70-iso8859-1, -misc-tamzenforpowerline-medium-r-normal--14-101-100-100-c-70-iso8859-1, -gnu-unifont-medium-r-normal-sans-16-160-75-75-c-80-iso10646-1
-URxvt.font: xft:overpass mono:size=12
+URxvt.font: xft:courier prime:size=14
 URxvt.letterSpace: -1
-!URxvt.boldFont: -misc-tamzen-bold-r-normal--14-101-100-100-c-70-iso8859-1
 
 ! seoul256 colours
 URxvt*background: #3a3a3a 
