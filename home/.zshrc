@@ -1,6 +1,7 @@
 # Path to your oh-my-zsh installation.
 HOMEDIR="/home/callum"
 export ZSH="$HOME/.oh-my-zsh"
+bindkey -v
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -37,9 +38,10 @@ plt_gen() {
   fi
 }
 
-plugins=(git)
+plugins=(git vi-mode)
 source $ZSH/oh-my-zsh.sh
 
 # Personal aliases, otherwise they get overwritten in oh-my-zsh.sh
 source $HOME/.aliases
 test -f /home/callum/amber/amber20//amber.sh && source /home/callum/amber/amber20//amber.sh
+xrdb -merge ~/.Xresources

@@ -116,8 +116,8 @@ let g:ale_linters = {
 \              'reorder-python-imports'
 \             ],
 \}
-let g:ale_fortran_gcc_executable = 'gfortran-mp-5'
-let g:ale_fortran_gcc_options = '-Jmod -std=f2003 -fopenmp'
+let g:ale_fortran_gcc_executable = 'gfortran'
+let g:ale_fortran_gcc_options = '-Jmod -std=f2008 -fopenmp'
 let g:ale_fortran_gcc_use_free_form = 1
 
 " --- remappings ---

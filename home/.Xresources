@@ -183,7 +183,7 @@ URxvt*iconFile: /usr/share/icons/Paper/512x512/apps/xterm-color.png
 ! URxvt*skipBuiltinGlyphs: boolean
 
 ! Specifies the terminal type name to be set in the TERM environment variable; option -tn.
-! URxvt*termName: termname
+URxvt*termName: xterm-256color
 
 ! Specifies number of lines (pixel height) to insert between each row of the display [default 0];
 ! URxvt*lineSpace: number
