@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 def xy_plot(filename, xlabel,
             ylabel, label, output):
     d = np.loadtxt(filename)
+    fig, ax = plt.subplots()
     plt.plot(d[:, 0], d[:, 1], label=label)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)

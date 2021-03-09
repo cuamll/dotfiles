@@ -15,6 +15,8 @@ Plug 'lervag/vimtex'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'godlygeek/tabular'
+Plug 'vimwiki/vimwiki'
+Plug 'JuliaEditorSupport/julia-vim'
 
 " Colour schemes
 Plug 'whatyouhide/vim-gotham'

@@ -11,6 +11,9 @@ def log_2d_plot(filename, xlabel,
     d = np.ma.masked_where(d == 0., d)
     fig, ax = plt.subplots()
     norm = colors.LogNorm(vmin=d.min(), vmax=d.max())
+    # symmetric log with linear bit around 0! very useful
+    # norm = colors.SysLogNorm(linthresh=0.1, linscale=1.0, 
+    #                          base=10, vmin=d.min(), vmax=d.max())
     im = ax.imshow(d, norm=norm)
     plt.imshow(d, norm=norm)
     plt.colorbar(im, label=label, norm=norm)
