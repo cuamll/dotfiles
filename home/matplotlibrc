@@ -9,7 +9,7 @@ lines.linestyle   : -
 lines.markersize  : 6
 
 text.usetex         : True
-font.size           : 16.0
+font.size           : 20.0
 # uncommenting these two lines throws a warning
 # from findfont every time a plot is made; it doesn't
 # seem to matter, though, the latex sans font is used anyway???
@@ -37,6 +37,7 @@ axes.prop_cycle    : cycler('color', ['99001A', '278BE8', '145E00', 'F2D33C', '8
                       ## colorspecs: single letter, long name, or web-style hex
 					  ## Note the use of string escapes here ('1f77b4', instead of 1f77b4)
                       ## as opposed to the rest of this file.
+axes.formatter.limits : -5, 5
 
 #### GRIDS
 grid.color       :   666666
